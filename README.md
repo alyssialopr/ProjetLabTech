@@ -64,7 +64,9 @@ ProjetLabTech/
 │   │   ├── utils/          # Fonctions utilitaires
 │   │   ├── styles/         # Styles globaux
 │   │   └── App.js          # Composant principal
-│   └── package.json
+│   ├── package.json
+│   ├── Dockerfil
+
 │
 ├── backend/                 # API Express.js
 │   ├── src/
@@ -74,7 +76,8 @@ ProjetLabTech/
 │   │   ├── services/       # Services (Mistral AI)
 │   │   ├── config/         # Configuration
 │   │   └── server.js       # Point d'entrée
-│   └── package.json
+│   ├── package.json
+|   ├── Dockerfile
 │
 ├── docker-compose.yml       # Configuration Docker
 └── README.md                # Documentation
