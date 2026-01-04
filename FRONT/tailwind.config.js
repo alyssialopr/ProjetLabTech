@@ -21,6 +21,9 @@ export default {
       fontFamily: {
         sans: ['Lexend', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },
+      boxShadow: {
+        focus: "0 0 0 3px rgba(236,72,153,0.5)",
+      },
     },
   },
   plugins: [],
