@@ -1,13 +1,16 @@
-import "./App.css";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import LabIALanding from './pages/LabIALanding'
+import LabResultsPage from './pages/LabResultsPage'
+import './App.css'
 
 function App() {
   return (
-    <>
-      <section className="bg-white">
-        <p className="text-raspberry-900">OPIOIOI</p>
-      </section>
-    </>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LabIALanding />} />
+        <Route path="/results" element={<LabResultsPage />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
-
-export default App;
+export default App
