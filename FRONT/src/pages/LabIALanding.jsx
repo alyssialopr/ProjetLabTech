@@ -43,16 +43,14 @@ export default function LabIALanding() {
               <button className="bg-pink-600 text-white px-6 py-3 rounded">Create Account</button>
               <button className="border px-6 py-3 rounded">Login</button>
             </div> */}
-            <div
-              className="mt-4 text-base text-green-600 flex gap-1"
-            >
+            <div className="mt-4 text-base text-green-600 flex gap-1">
               <span>✔ Sécurisé et conforme au RGPD</span>
               <span>✔ Complétement accessible</span>
               <span>✔ Gratuit et simple d'utilisation</span>
             </div>
             <div className="flex gap-4">
               <button className="bg-white text-raspberry-600 px-6 py-3 rounded mt-6">
-                Commencer
+                <a href="/results">Commencer</a>
               </button>
             </div>
           </div>
@@ -74,12 +72,12 @@ export default function LabIALanding() {
                 title: "Upload Your Results",
                 text: "Upload your medical test results as a PDF or enter values manually. Your data is encrypted and secure.",
                 // icon: Camera,
-            },
+              },
               {
                 title: "AI Analysis",
                 text: "Our AI analyzes your results and compares them to reference ranges.",
                 // icon: Zap,
-            },
+              },
               {
                 title: "Get Clear Explanations",
                 text: "Receive simple explanations in plain language, with visuals and audio options.",
@@ -166,8 +164,8 @@ export default function LabIALanding() {
             Ready to understand your health better?
           </h2>
           <p className="mb-6">Join thousands of users who trust Lab'IA.</p>
-          <button className="bg-white text-blue-600 px-6 py-3 rounded">
-            Get Started
+          <button className="bg-white text-black px-6 py-3 rounded">
+            <a href="/results">Commencer</a>
           </button>
         </section>
       </main>
