@@ -127,7 +127,7 @@ export default function Upload() {
             <UiButton
               bg="raspberry"
               text="white"
-              onClick={() => navigate("/result")}
+              onClick={() => navigate("/results")}
               className="w-full py-3 text-base"
             >
               Analyze this report
