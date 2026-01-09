@@ -1,17 +1,19 @@
-import express from 'express';
-import dotenv from 'dotenv';
+import express from "express";
+import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
-app.get('/', (req, res) => {
-  res.send('Hello World! 2');
+app.use(express.json());
+app.use(cookieParser());
+
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
-app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
-});
-
-// Force le processus à rester vivant
-setInterval(() => {}, 1000);
+app.listen(3001, () => {
+  console.log("Server running on http://localhost:3001");
+})
