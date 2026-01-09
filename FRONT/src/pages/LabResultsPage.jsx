@@ -59,7 +59,7 @@ export default function LabResultsPage() {
 
           {/* New Analysis Button */}
           <div className="mt-24 flex justify-end">
-            <button onClick={() => navigate("/help")} className="px-6 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition flex items-center gap-2">
+            <button className="px-6 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition flex items-center gap-2">
               Help
             </button>
           </div>
