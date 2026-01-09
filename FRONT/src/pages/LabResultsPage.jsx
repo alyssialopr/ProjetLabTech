@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import UiButton from "../components/UiButton";
 
 export default function LabResultsPage() {
   const [results] = useState([
@@ -104,7 +105,9 @@ export default function LabResultsPage() {
               <div className="flex items-start gap-2 text-gray-600 bg-gray-50 p-3 rounded-lg text-xs">
                 <span className="mt-0.5">⚠️</span>
                 <span>
-                  Disclaimer: Ce site sert principalement d'information - ce n'est pas un outil medical, ne remplace pas un avis medical professionnel.
+                  Disclaimer: Ce site sert principalement d'information - ce
+                  n'est pas un outil medical, ne remplace pas un avis medical
+                  professionnel.
                 </span>
               </div>
             </div>
@@ -149,14 +152,21 @@ export default function LabResultsPage() {
 
           {/* Footer Buttons */}
           <div className="flex gap-4 mt-8">
-            <button className="flex-1 flex items-center justify-center gap-2 px-6 py-3 text-white font-semibold rounded-lg transition">
-              <a href="/">
-                ← Retour à l'accueil
-              </a>
-            </button>
-            <button className="flex-1 flex items-center justify-center gap-2 px-6 py-3 text-white font-semibold rounded-lg transition">
+            <UiButton
+              bg="raspberry"
+              text="white"
+            >
+              <a href="/">← Retour à l'accueil</a>
+            </UiButton>
+            <UiButton
+              bg="raspberry"
+              text="white"
+            >
+              <a href="/">↓ Export en PDF</a>
+            </UiButton>
+            {/* <button className="flex-1 flex items-center justify-center gap-2 px-6 py-3 text-white font-semibold rounded-lg transition">
               ↓ Export en PDF
-            </button>
+            </button> */}
           </div>
 
           {/* Disclaimer Footer */}

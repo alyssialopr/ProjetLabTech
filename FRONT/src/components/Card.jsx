@@ -2,6 +2,7 @@ export default function Card({ icon, title, description, className, onClick }) {
   return (
     <button
       type="button"
+      role="button"
       onClick={onClick}
       className={`
         w-[480px] h-[248.8px]
