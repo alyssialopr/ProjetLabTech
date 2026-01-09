@@ -45,7 +45,6 @@ export default function HomeHeader() {
         "
       >
         <div className="flex items-center gap-3">
-          {/* Icône patte d’ours cliquable */}
           <button
             type="button"
             onClick={() => navigate("/")}
@@ -62,7 +61,6 @@ export default function HomeHeader() {
             🐾
           </button>
 
-          {/* Texte */}
           <div
             className="flex flex-col text-left"
             style={{ fontSize: `${fontSize}px` }}
