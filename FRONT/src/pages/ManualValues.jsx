@@ -70,7 +70,7 @@ export default function ManualValues() {
             bg="raspberry"
             text="white"
             className="w-full py-3 text-base"
-            onClick={() => navigate("/result")}
+            onClick={() => navigate("/results")}
           >
             Analyze Results
           </UiButton>
