@@ -23,13 +23,12 @@ export default function TestValueCard({ name }) {
       </h2>
 
       <div className="grid grid-cols-2 gap-4">
-        {/* Valeur */}
         <div className="flex flex-col gap-1">
           <label
             htmlFor={`${safeId}-value`}
             className="text-sm font-medium text-raspberry-900"
           >
-            Your value
+            Votre valeur
           </label>
 
           <input
@@ -49,13 +48,12 @@ export default function TestValueCard({ name }) {
           />
         </div>
 
-        {/* Unité */}
         <div className="flex flex-col gap-1">
           <label
             htmlFor={`${safeId}-unit`}
             className="text-sm font-medium text-raspberry-900"
           >
-            Unit
+            Unité
           </label>
 
           <select
@@ -73,7 +71,7 @@ export default function TestValueCard({ name }) {
             "
           >
             <option value="" disabled>
-              Select a unit
+              Selectionnez une unité
             </option>
             <option value="g/dL">g/dL</option>
             <option value="mg/dL">mg/dL</option>
@@ -86,15 +84,14 @@ export default function TestValueCard({ name }) {
         </div>
       </div>
 
-      {/* Valeurs de référence */}
       <div className="flex flex-col gap-1">
         <span className="text-sm font-medium text-raspberry-900">
-          Reference range (optional)
+          Plage de référence (optionnel)
         </span>
 
         <div className="flex items-center gap-2">
           <label htmlFor={`${safeId}-min`} className="sr-only">
-            Minimum reference value
+            Valeur minimale de référence
           </label>
 
           <input
@@ -114,11 +111,11 @@ export default function TestValueCard({ name }) {
           />
 
           <span className="text-sm text-raspberry-700" aria-hidden="true">
-            to
+            à
           </span>
 
           <label htmlFor={`${safeId}-max`} className="sr-only">
-            Maximum reference value
+            Valeur maximale de référence
           </label>
 
           <input
