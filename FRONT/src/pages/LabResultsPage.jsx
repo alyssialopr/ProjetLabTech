@@ -69,7 +69,7 @@ export default function LabResultsPage() {
           {/* Results Summary */}
           <div className="p-6 mb-6">
             <div className="flex items-start gap-3 mb-4">
-              <div className="w-8 h-8 bg-raspberry-700 rounded flex items-center justify-center text-white text-lg">
+              <div onClick={() => navigate("/help")} className="w-8 h-8 bg-raspberry-700 rounded flex items-center justify-center text-white text-lg">
                 🏥
               </div>
               <div className="flex-1">
