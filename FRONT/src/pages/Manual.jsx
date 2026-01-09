@@ -11,7 +11,7 @@ export default function Manual() {
   const [testName, setTestName] = useState("");
   const [tests, setTests] = useState([]);
 
-  const commonTests = ["Hemoglobin", "White Blood Cell Count", "Glucose"];
+  const commonTests = ["Hémoglobine", "Numération des globules blancs", "Glucose"];
 
   const addTest = (name) => {
     if (!name.trim()) return;
@@ -40,10 +40,10 @@ export default function Manual() {
           <div className="flex items-start justify-between">
             <div>
               <h1 className="text-base font-normal text-raspberry-900">
-                Build Your Test List
+                Construisez votre liste de tests
               </h1>
               <p className="text-base font-normal text-raspberry-700">
-                Add the tests you want to analyze
+                Ajouter les tests que vous souhaitez analyser
               </p>
             </div>
 
@@ -65,13 +65,13 @@ export default function Manual() {
               id="add-test-title"
               className="text-sm font-medium text-raspberry-900"
             >
-              Test name
+              Nom du test
             </h2>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="flex items-center gap-3">
                 <label htmlFor="test-name" className="sr-only">
-                  Enter a test name
+                  Entrez un nom de test
                 </label>
 
                 <input
@@ -105,7 +105,7 @@ export default function Manual() {
         "
                 >
                   <Plus size={18} aria-hidden="true" />
-                  <span className="text-sm">Add</span>
+                  <span className="text-sm">Ajouter</span>
                 </button>
               </div>
 
@@ -118,7 +118,7 @@ export default function Manual() {
                     aria-label={`Add ${test}`}
                     className="
             px-3 py-1
-            rounded-full
+            rounded-lg
             bg-raspberry-100
             border border-raspberry-200
             text-sm
@@ -142,7 +142,7 @@ export default function Manual() {
               id="your-tests-title"
               className="text-sm font-medium text-raspberry-900"
             >
-              Your Tests ({tests.length})
+              Vos tests ({tests.length})
             </h2>
 
             <ul aria-live="polite" className="flex flex-col gap-2">
@@ -177,7 +177,7 @@ export default function Manual() {
               onClick={() => navigate("/manual/values", { state: { tests } })}
               className="w-full py-3 text-base"
             >
-              Next: Enter Values
+              Suivant: Entrez les valeurs
             </UiButton>
           )}
         </div>
