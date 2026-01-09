@@ -5,12 +5,10 @@ import analyseSammaryRoute from "./routes/analyseSammaryRoute.js";
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 3001;
 
-app.use(express.json());
-app.use('/analyse', analyseSammaryRoute);
-
-app.get("/", (_, res) => {
-  res.send("API OK !");
+app.get('/', (req, res) => {
+  res.send('Hello World! 2');
 });
 
 app.listen(3001, () => {
