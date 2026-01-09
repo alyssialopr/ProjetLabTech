@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import UiButton from "../components/UiButton";
+import { Smile, Frown, Meh  } from "lucide-react";
 
 export default function LabResultsPage() {
   const [results] = useState([
@@ -7,6 +8,7 @@ export default function LabResultsPage() {
       id: 1,
       name: "HDL Cholesterol",
       value: "24",
+      resultIcon: <Meh />,
       status: "abnormal",
       color: "border-blue-400",
       bgColor: "bg-blue-50",
@@ -19,6 +21,7 @@ export default function LabResultsPage() {
       id: 2,
       name: "Hemoglobin",
       value: "12.4",
+      resultIcon: <Smile />,
       status: "normal",
       color: "border-green-400",
       bgColor: "bg-green-50",
@@ -31,6 +34,7 @@ export default function LabResultsPage() {
       id: 3,
       name: "Glucose",
       value: "9",
+      resultIcon: <Frown />,
       status: "abnormal",
       color: "border-yellow-400",
       bgColor: "bg-yellow-50",
@@ -126,9 +130,12 @@ export default function LabResultsPage() {
                       <h3 className="font-bold text-gray-900 text-lg">
                         {result.name}
                       </h3>
-                      <p className="text-3xl font-bold text-gray-900 mt-1">
-                        {result.value}
-                      </p>
+                      <div className="flex items-center">
+                        <p className="text-3xl font-bold text-gray-900 mt-1">
+                          {result.value}
+                        </p>
+                        <p className="mx-4">{result.resultIcon}</p>
+                      </div>
                     </div>
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-semibold ${result.statusColor}`}
@@ -152,16 +159,10 @@ export default function LabResultsPage() {
 
           {/* Footer Buttons */}
           <div className="flex gap-4 mt-8">
-            <UiButton
-              bg="raspberry"
-              text="white"
-            >
+            <UiButton bg="raspberry" text="white">
               <a href="/">← Retour à l'accueil</a>
             </UiButton>
-            <UiButton
-              bg="raspberry"
-              text="white"
-            >
+            <UiButton bg="raspberry" text="white">
               <a href="/">↓ Export en PDF</a>
             </UiButton>
             {/* <button className="flex-1 flex items-center justify-center gap-2 px-6 py-3 text-white font-semibold rounded-lg transition">
@@ -172,7 +173,7 @@ export default function LabResultsPage() {
           {/* Disclaimer Footer */}
           <p className="text-xs text-gray-500 text-center mt-6 border-t pt-4">
             Cet outil est à but informatif uniquement et ne remplace pas un avis
-            médical professionnel. 
+            médical professionnel.
           </p>
         </div>
       </div>
