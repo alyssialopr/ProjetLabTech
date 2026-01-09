@@ -1,6 +1,9 @@
 import UiButton from "./UiButton";
+import { useFontSize } from "./FontSizeContext";
 
-export default function TextSizeControl({ fontSize, setFontSize }) {
+export default function TextSizeControl() {
+  const { fontSize, setFontSize } = useFontSize();
+
   const decrease = () => setFontSize((s) => Math.max(14, s - 2));
   const increase = () => setFontSize((s) => Math.min(24, s + 2));
 
