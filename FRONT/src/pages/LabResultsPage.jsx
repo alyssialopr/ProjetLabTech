@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import UiButton from "../components/UiButton";
-import { Smile, Frown, Meh  } from "lucide-react";
+import { Smile, Frown, Meh } from "lucide-react";
 
 export default function LabResultsPage() {
   const [results] = useState([
@@ -15,7 +15,7 @@ export default function LabResultsPage() {
       statusColor: "bg-blue-100 text-blue-800",
       icon: "⚠️",
       explanation:
-        "Your HDL Cholesterol level is within the healthy range. This is a good sign! Continue maintaining a balanced diet, regular exercise, and healthy lifestyle habits.",
+        "Votre niveau de HDL Cholesterol est à un niveau anormal. Il est recommandé de consulter un professionnel de santé pour une évaluation plus approfondie et des conseils personnalisés.",
     },
     {
       id: 2,
@@ -28,7 +28,7 @@ export default function LabResultsPage() {
       statusColor: "bg-green-100 text-green-800",
       icon: "✓",
       explanation:
-        "Your Hemoglobin level is within the healthy range. This is a good sign! Continue maintaining a balanced diet, regular exercise, and healthy lifestyle habits.",
+        "Votre niveau de glucose est à un niveau sain. C'est bon signe ! Continuer de maintenir un régime alimentaire équilibré, un exercice régulier et un mode de vie sain.",
     },
     {
       id: 3,
@@ -41,7 +41,7 @@ export default function LabResultsPage() {
       statusColor: "bg-yellow-100 text-yellow-800",
       icon: "⚠️",
       explanation:
-        "Your Glucose level is within the healthy range. This is a good sign! Continue maintaining a balanced diet, regular exercise, and healthy lifestyle habits.",
+        "Votre niveau de glucose est à un niveau sain. Il est recommandé de consulter un professionnel de santé pour une évaluation plus approfondie et des conseils personnalisés.",
     },
   ]);
 
@@ -60,7 +60,7 @@ export default function LabResultsPage() {
                   Lab Results Assistant
                 </h1>
                 <p className="text-sm text-gray-600">
-                  Simple, clear analysis of your health data
+                  Claire et simple analys de de vos résultats de laboratoire
                 </p>
               </div>
             </div>
@@ -92,17 +92,16 @@ export default function LabResultsPage() {
             <div className="space-y-3">
               <div className="flex items-start gap-2 text-green-700 bg-green-50 p-3 rounded-lg">
                 <span className="mt-0.5">✅</span>
-                <span className="text-sm">
-                  3 values are within normal range
-                </span>
+                <span className="text-sm">1 valeur est dans la normale.</span>
               </div>
 
               <div className="flex items-start gap-2 text-green-700 bg-green-50 p-3 rounded-lg">
                 <span className="mt-0.5">✅</span>
                 <span className="text-sm">
-                  Great news! All your values look good. Keep up the healthy
-                  lifestyle! Remember to discuss these results with your
-                  healthcare provider during your next visit.
+                  Bonne nouvelle ! Toutes vos valeurs sont bonnes. Continuez à
+                  maintenir un mode de vie sain ! N'oubliez pas de discuter de
+                  ces résultats avec votre professionnel de santé lors de votre
+                  prochaine visite.
                 </span>
               </div>
 
