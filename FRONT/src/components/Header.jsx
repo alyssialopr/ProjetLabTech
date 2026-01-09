@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TextSizeControl from "./TextSizeControl";
 import UiButton from "./UiButton";
 
 export default function Header() {
   const [fontSize, setFontSize] = useState(16);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -43,21 +45,31 @@ export default function Header() {
         "
       >
         <div className="flex items-center gap-3">
-          <img
-            src="/leogo.svg"
-            alt="Lab Result Assistant"
-            className="h-10 w-10"
-          />
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            aria-label="Retour à l’accueil"
+            className="
+              text-raspberry-900
+              text-2xl
+              font-black
+              focus:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-raspberry-500
+            "
+          >
+            🐾
+          </button>
 
           <div
             className="flex flex-col text-left"
             style={{ fontSize: `${fontSize}px` }}
           >
-            <p className="text-xl font-medium text-raspberry-900">
+            <p className="text-xl font-black text-raspberry-900">
               Assistant d’analyse de résultats médicaux
             </p>
 
-            <p className="text-sm text-raspberry-700">
+            <p className="text-sm text-raspberry-700 font-medium">
               Une analyse simple et claire de vos données de santé
             </p>
           </div>
