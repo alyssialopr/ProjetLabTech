@@ -13,9 +13,7 @@ export default function TestValueCard({ name }) {
       "
       aria-labelledby={`${safeId}-title`}
     >
-      <legend className="sr-only">
-        {name}
-      </legend>
+      <legend className="sr-only">{name}</legend>
 
       <h2
         id={`${safeId}-title`}
@@ -25,6 +23,7 @@ export default function TestValueCard({ name }) {
       </h2>
 
       <div className="grid grid-cols-2 gap-4">
+        {/* Valeur */}
         <div className="flex flex-col gap-1">
           <label
             htmlFor={`${safeId}-value`}
@@ -50,6 +49,7 @@ export default function TestValueCard({ name }) {
           />
         </div>
 
+        {/* Unité */}
         <div className="flex flex-col gap-1">
           <label
             htmlFor={`${safeId}-unit`}
@@ -58,23 +58,35 @@ export default function TestValueCard({ name }) {
             Unit
           </label>
 
-          <input
+          <select
             id={`${safeId}-unit`}
-            type="text"
-            placeholder="e.g., g/dL, mg/dL"
+            defaultValue=""
             className="
               border-2 border-raspberry-200
               rounded-lg
               px-3 py-2
               text-sm
+              bg-white
               focus:outline-none
               focus:ring-2
               focus:ring-raspberry-500
             "
-          />
+          >
+            <option value="" disabled>
+              Select a unit
+            </option>
+            <option value="g/dL">g/dL</option>
+            <option value="mg/dL">mg/dL</option>
+            <option value="mmol/L">mmol/L</option>
+            <option value="µmol/L">µmol/L</option>
+            <option value="10^9/L">10⁹/L</option>
+            <option value="U/L">U/L</option>
+            <option value="%">%</option>
+          </select>
         </div>
       </div>
 
+      {/* Valeurs de référence */}
       <div className="flex flex-col gap-1">
         <span className="text-sm font-medium text-raspberry-900">
           Reference range (optional)
