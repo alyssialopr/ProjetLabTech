@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import UiButton from "../components/UiButton";
 import { Smile, Frown, Meh } from "lucide-react";
+import Header from "../components/Header";
 
 export default function LabResultsPage() {
   const [results] = useState([
@@ -50,29 +51,12 @@ export default function LabResultsPage() {
       <div className="max-w-4xl mx-auto p-6 space-y-6">
         <div className="w-full h-full">
           {/* Header */}
-          <div className="flex justify-between items-center mb-6">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-raspberry-700 rounded-lg flex items-center justify-center text-white font-bold text-sm">
-                🏥
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">
-                  Lab Results Assistant
-                </h1>
-                <p className="text-sm text-gray-600">
-                  Claire et simple analys de de vos résultats de laboratoire
-                </p>
-              </div>
-            </div>
-            <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-pink-100 rounded-lg hover:bg-pink-200 transition">
-              Help
-            </button>
-          </div>
+          <Header />
 
           {/* New Analysis Button */}
-          <div className="mb-6 flex justify-end">
+          <div className="mt-24 flex justify-end">
             <button className="px-6 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition flex items-center gap-2">
-              + Nouvelle analyse
+              Help
             </button>
           </div>
 
