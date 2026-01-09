@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import UiButton from "../components/UiButton";
 import { Smile, Frown, Meh } from "lucide-react";
 import Header from "../components/Header";
+import { useNavigate } from "react-router-dom";
+
 
 export default function LabResultsPage() {
+  const navigate = useNavigate();
+
   const [results] = useState([
     {
       id: 1,
@@ -55,10 +59,8 @@ export default function LabResultsPage() {
 
           {/* New Analysis Button */}
           <div className="mt-24 flex justify-end">
-            <button className="px-6 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition flex items-center gap-2">
-              <a href="/help">
-                Help
-              </a>
+            <button onClick={() => navigate("/help")} className="px-6 py-2 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition flex items-center gap-2">
+              Help
             </button>
           </div>
 
