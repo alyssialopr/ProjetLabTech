@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './router';
-import "././index.css";
-
+import { FontSizeProvider } from './components/FontSizeContext';
+import "./index.css";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <FontSizeProvider>
+      <RouterProvider router={router} />
+    </FontSizeProvider>
   </React.StrictMode>
 );

@@ -10,8 +10,14 @@ export default function Manual() {
 
   const [testName, setTestName] = useState("");
   const [tests, setTests] = useState([]);
+  const [sex, setSex] = useState("");
+  const [age, setAge] = useState("");
 
-  const commonTests = ["Hémoglobine", "Numération des globules blancs", "Glucose"];
+  const commonTests = [
+    "Hémoglobine",
+    "Numération des globules blancs",
+    "Glucose",
+  ];
 
   const addTest = (name) => {
     if (!name.trim()) return;
@@ -34,7 +40,7 @@ export default function Manual() {
 
       <main
         id="main-content"
-        className="flex-1 flex items-center justify-center px-4"
+        className="flex-1 flex items-center justify-center px-4 pt-24"
       >
         <div className="max-w-[640px] w-full flex flex-col gap-6">
           <div className="flex items-start justify-between">
@@ -56,6 +62,76 @@ export default function Manual() {
               <X className="text-raspberry-900" aria-hidden="true" />
             </button>
           </div>
+
+          <section
+            className="bg-white rounded-xl border-2 border-raspberry-200 p-6 flex flex-col gap-4"
+            aria-labelledby="patient-info-title"
+          >
+            <h2
+              id="patient-info-title"
+              className="text-sm font-medium text-raspberry-900"
+            >
+              Informations patient
+            </h2>
+
+            {/* Sexe */}
+            <div className="flex flex-col gap-2">
+              <span className="text-sm text-raspberry-900">Sexe</span>
+
+              <div className="flex gap-3">
+                <button
+                  type="button"
+                  onClick={() => setSex("homme")}
+                  className={`px-4 py-2 rounded-lg border-2 text-sm transition
+          ${
+            sex === "homme"
+              ? "bg-raspberry-600 text-white border-raspberry-600"
+              : "border-raspberry-200 text-raspberry-700"
+          }`}
+                >
+                  Homme
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setSex("femme")}
+                  className={`px-4 py-2 rounded-lg border-2 text-sm transition
+          ${
+            sex === "femme"
+              ? "bg-raspberry-600 text-white border-raspberry-600"
+              : "border-raspberry-200 text-raspberry-700"
+          }`}
+                >
+                  Femme
+                </button>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label htmlFor="age" className="text-sm text-raspberry-900">
+                Âge
+              </label>
+
+              <input
+                id="age"
+                type="number"
+                min="0"
+                max="120"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+                placeholder="ex: 28"
+                className="
+        border-2 border-raspberry-200
+        rounded-lg
+        px-3 py-2
+        text-sm
+        focus:outline-none
+        focus:ring-2
+        focus:ring-raspberry-500
+      "
+              />
+            </div>
+          </section>
 
           <section
             className="bg-white rounded-xl border-2 border-raspberry-200 p-6 flex flex-col gap-4"
@@ -170,14 +246,22 @@ export default function Manual() {
             </ul>
           </section>
 
-          {tests.length > 0 && (
+          {tests.length > 0 && sex && age && (
             <UiButton
               bg="raspberry"
               text="white"
-              onClick={() => navigate("/manual/values", { state: { tests } })}
+              onClick={() =>
+                navigate("/manual/values", {
+                  state: {
+                    tests,
+                    sex,
+                    age: Number(age),
+                  },
+                })
+              }
               className="w-full py-3 text-base"
             >
-              Suivant: Entrez les valeurs
+              Suivant : Entrez les valeurs
             </UiButton>
           )}
         </div>
