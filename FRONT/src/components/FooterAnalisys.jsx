@@ -7,6 +7,7 @@ export default function FooterAnalysis() {
         border-t-2 border-raspberry-700
         p-4
         text-center
+        mt-12
       "
     >
       <p className="text-sm text-raspberry-700">
