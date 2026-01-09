@@ -14,16 +14,26 @@ export default function ManualValues() {
     <div className="min-h-screen bg-raspberry-50 flex flex-col">
       <Header />
 
-      <main className="flex-1 flex justify-center px-4 pt-28">
+<main
+  id="main-content"
+  tabIndex={-1}
+  className="flex-1 flex justify-center px-4 pt-28 scroll-mt-28"
+>
+
+
         <div className="max-w-[720px] w-full flex flex-col gap-6">
 
-          {/* Header */}
-          <div className="flex items-start gap-4">
+          <header className="flex items-start gap-4">
             <button
               type="button"
               onClick={() => navigate(-1)}
+              aria-label="Go back to test list"
+              className="focus:outline-none focus:ring-2 focus:ring-raspberry-500 rounded"
             >
-              <ArrowLeft className="text-raspberry-900" />
+              <ArrowLeft
+                className="text-raspberry-900"
+                aria-hidden="true"
+              />
             </button>
 
             <div>
@@ -34,16 +44,28 @@ export default function ManualValues() {
                 Fill in the values from your lab report
               </p>
             </div>
-          </div>
+          </header>
 
-          {/* Cards */}
-          <div className="flex flex-col gap-4">
-            {tests.map((test) => (
-              <TestValueCard key={test} name={test} />
-            ))}
-          </div>
+          <section
+            aria-labelledby="test-values-title"
+            className="flex flex-col gap-4"
+          >
+            <h2 id="test-values-title" className="sr-only">
+              Test values form
+            </h2>
 
-          {/* Analyze */}
+            <ul
+              className="flex flex-col gap-4"
+              aria-live="polite"
+            >
+              {tests.map((test) => (
+                <li key={test}>
+                  <TestValueCard name={test} />
+                </li>
+              ))}
+            </ul>
+          </section>
+
           <UiButton
             bg="raspberry"
             text="white"

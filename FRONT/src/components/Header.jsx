@@ -75,7 +75,7 @@ export default function Header() {
           <UiButton
             bg="raspberry"
             text="white"
-            onClick={() => console.log("Nouvelle analyse")}
+            onClick={() => navigate("/analysis")}
           >
             Nouvelle analyse
           </UiButton>
