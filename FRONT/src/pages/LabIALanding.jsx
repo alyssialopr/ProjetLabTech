@@ -284,19 +284,19 @@ export default function LabIALanding() {
       <h4 className="font-semibold mb-2">Legal</h4>
       <ul className="space-y-1">
         <li>
-          <a className="text-raspberry-900 hover:underline" href="">
+          <p className="text-raspberry-900 hover:underline" href="">
             Terms of Service
-          </a>
+          </p>
         </li>
         <li>
-          <a className="text-raspberry-900 hover:underline" href="#">
+          <p className="text-raspberry-900 hover:underline" href="#">
             Privacy Policy
-          </a>
+          </p>
         </li>
         <li>
-          <a className="text-raspberry-900 hover:underline" href="#">
+          <p className="text-raspberry-900 hover:underline" href="#">
             Cookie Policy
-          </a>
+          </p>
         </li>
       </ul>
     </div>
@@ -305,19 +305,19 @@ export default function LabIALanding() {
       <h4 className="font-semibold mb-2">Compliance</h4>
       <ul className="space-y-1">
         <li>
-          <a className="text-raspberry-900 hover:underline" href="#">
+          <p className="text-raspberry-900 hover:underline" href="#">
             GDPR Compliance
-          </a>
+          </p>
         </li>
         <li>
-          <a className="text-raspberry-900 hover:underline" href="#">
+          <p className="text-raspberry-900 hover:underline" href="#">
             Accessibility Statement
-          </a>
+          </p>
         </li>
         <li>
-          <a className="text-raspberry-900 hover:underline" href="#">
+          <p className="text-raspberry-900 hover:underline" href="#">
             Legal Disclaimer
-          </a>
+          </p>
         </li>
       </ul>
     </div>
