@@ -26,24 +26,33 @@ export default function LabIALanding() {
       {/* Header */}
       <HomeHeader />
 
+      {/* Skip to main content link */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-raspberry-700 text-white px-3 py-1 rounded z-50"
+        aria-label="Aller au contenu principal"
+      >
+        Aller au contenu principal
+      </a>
+
       {/* Hero */}
-      <main id="main" className="bg-raspberry-50">
-       <section className="mx-auto mt-12 px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
+      <main id="main-content" className="bg-raspberry-50" role="main" aria-label="Contenu principal de Lab'IA">
+       <section className="mx-auto mt-12 px-6 py-16 grid md:grid-cols-2 gap-10 items-center" aria-labelledby="hero-title">
   <div className="flex flex-col gap-4">
-    <h1 className="text-4xl font-semibold text-raspberry-900">
+    <h1 id="hero-title" aria-label="Comprendre vos résultats médicaux plus facilement avec Lab'IA" className="text-4xl font-semibold text-raspberry-900">
       Comprendre vos résultats médicaux plus facilement avec Lab'IA
     </h1>
 
-    <p className="text-base font-normal text-raspberry-700 max-w-xl">
+    <p aria-label="Lab'IA utilise l'intelligence artificielle pour traduire les rapports médicaux complexes en explications simples et compréhensibles. Aucun diplôme médical n'est nécessaire." className="text-base font-normal text-raspberry-700 max-w-xl">
       Lab'IA utilise l'intelligence artificielle pour traduire les
       rapports médicaux complexes en explications simples et
       compréhensibles. Aucun diplôme médical n'est nécessaire.
     </p>
 
-    <div className="flex flex-col gap-2 text-base text-green-600">
-      <span>✔ Sécurisé et conforme au RGPD</span>
-      <span>✔ Complètement accessible</span>
-      <span>✔ Gratuit et simple d'utilisation</span>
+    <div className="flex flex-col gap-2 text-base text-green-600" role="list" aria-label="Avantages de Lab'IA">
+      <span role="listitem" aria-label="Sécurisé et conforme au RGPD">✔ Sécurisé et conforme au RGPD</span>
+      <span role="listitem" aria-label="Complètement accessible">✔ Complètement accessible</span>
+      <span role="listitem" aria-label="Gratuit et simple d'utilisation">✔ Gratuit et simple d'utilisation</span>
     </div>
 
     <UiButton
@@ -51,6 +60,7 @@ export default function LabIALanding() {
       text="white"
       onClick={() => navigate("/analysis")}
       className="mt-4 w-max"
+      aria-label="Commencer l'analyse de vos résultats médicaux"
     >
       Commencez
     </UiButton>
@@ -58,23 +68,24 @@ export default function LabIALanding() {
 
   <img
     src="https://images.unsplash.com/photo-1606206591513-adbfbdd7a177?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    alt="Laboratory"
+    alt="Laboratoire médical avec équipements scientifiques"
     className="rounded-lg shadow"
+    aria-label="Image illustrant un laboratoire médical"
   />
 </section>
 
 
         {/* How it works */}
-        <section id="how" className="bg-white py-16">
-          <h2 className="text-center text-2xl font-bold mb-10 text-raspberry-900">
+        <section id="how" className="bg-white py-16" aria-labelledby="how-title">
+          <h2 id="how-title" className="text-center text-2xl font-bold mb-10 text-raspberry-900" aria-label="Comment fonctionne Lab'IA">
             Comment ça marche ?
           </h2>
-          <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6">
+          <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6" role="list" aria-label="Trois étapes pour utiliser Lab'IA">
             <article 
               className="flex flex-col border rounded-xl p-6 text-center items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-raspberry-700 transition-all cursor-pointer hover:shadow-lg"
               tabIndex="0"
-              role="region"
-              aria-label="Step 1: Upload your medical results"
+              role="listitem"
+              aria-label="Étape 1 : Téléchargez vos résultats médicaux au format PDF ou saisissez les valeurs manuellement"
             >
               {
                 <Import
@@ -83,16 +94,16 @@ export default function LabIALanding() {
                   aria-hidden="true"
                 />
               }
-              <h3 className="font-semibold mb-2">Téléchargez vos résultats</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-semibold mb-2" aria-label="Téléchargez vos résultats">Téléchargez vos résultats</h3>
+              <p className="text-sm text-gray-600" aria-label="Téléchargez vos résultats de tests médicaux au format PDF ou saisissez les valeurs manuellement. Vos données sont cryptées et sécurisées.">
                 Téléchargez vos résultats de tests médicaux au format PDF ou saisissez les valeurs manuellement. Vos données sont cryptées et sécurisées.
               </p>
             </article>
             <article 
               className="flex flex-col border rounded-xl p-6 text-center items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-700 transition-all cursor-pointer hover:shadow-lg"
               tabIndex="0"
-              role="region"
-              aria-label="Step 2: AI Analysis of your results"
+              role="listitem"
+              aria-label="Étape 2 : Notre IA analyse vos résultats et les compare aux plages de référence"
             >
               {
                 <Brain
@@ -101,16 +112,16 @@ export default function LabIALanding() {
                   aria-hidden="true"
                 />
               }
-              <h3 className="font-semibold mb-2">Analyse par l'IA</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-semibold mb-2" aria-label="Analyse par l'IA">Analyse par l'IA</h3>
+              <p className="text-sm text-gray-600" aria-label="Notre IA analyse vos résultats et les compare aux plages de référence.">
                 Notre IA analyse vos résultats et les compare aux plages de référence.
               </p>
             </article>
             <article 
               className="flex flex-col border rounded-xl p-6 text-center items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 transition-all cursor-pointer hover:shadow-lg"
               tabIndex="0"
-              role="region"
-              aria-label="Step 3: Get clear explanations"
+              role="listitem"
+              aria-label="Étape 3 : Recevez des explications simples en langage courant avec des visuels et des options audio"
             >
               {
                 <FilePlusCorner
@@ -119,8 +130,8 @@ export default function LabIALanding() {
                   aria-hidden="true"
                 />
               }
-              <h3 className="font-semibold mb-2">Recevez des explications claires</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-semibold mb-2" aria-label="Recevez des explications claires">Recevez des explications claires</h3>
+              <p className="text-sm text-gray-600" aria-label="Recevez des explications simples en langage courant, avec des visuels et des options audio.">
                 Recevez des explications simples en langage courant, avec des visuels et
                 des options audio.
               </p>
@@ -129,19 +140,19 @@ export default function LabIALanding() {
         </section>
 
         {/* Accessibility */}
-        <section id="accessibility" className="bg-gray-50 py-16">
-          <h2 className="text-center text-2xl font-bold mb-6 text-raspberry-900">
+        <section id="accessibility" className="bg-gray-50 py-16" aria-labelledby="accessibility-title">
+          <h2 id="accessibility-title" className="text-center text-2xl font-bold mb-6 text-raspberry-900" aria-label="Conçu pour tous, accessibilité Lab'IA">
             Conçu pour tous
           </h2>
-          <p className="text-center mb-6">
-            Conçu selon les normes d’accessibilité WCAG 2.2 AA et RGAA
+          <p className="text-center mb-6" aria-label="Conçu selon les normes d'accessibilité WCAG 2.2 AA et RGAA">
+            Conçu selon les normes d'accessibilité WCAG 2.2 AA et RGAA
           </p>
-          <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-6">
+          <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-6" role="list" aria-label="Quatre fonctionnalités d'accessibilité de Lab'IA">
             <article 
               className="flex flex-col border rounded-xl p-6 text-center bg-white items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-raspberry-700 transition-all cursor-pointer hover:shadow-lg"
               tabIndex="0"
-              role="region"
-              aria-label="Visual Accessibility feature"
+              role="listitem"
+              aria-label="Accessibilité visuelle : Fonctionnalités visuelles conformes à WCAG 2.2"
             >
               {
                 <Eye
@@ -150,16 +161,16 @@ export default function LabIALanding() {
                   aria-hidden="true"
                 />
               }
-              <h3 className="font-semibold">Accessibilité visuelle</h3>
-              <p className="text-sm text-gray-600 mt-2">
+              <h3 className="font-semibold" aria-label="Accessibilité visuelle">Accessibilité visuelle</h3>
+              <p className="text-sm text-gray-600 mt-2" aria-label="Fonctionnalités d'accessibilité conformes à la norme WCAG 2.2.">
                 Fonctionnalités d'accessibilité conformes à la norme WCAG 2.2.
               </p>
             </article>
             <article 
               className="flex flex-col border rounded-xl p-6 text-center bg-white items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-700 transition-all cursor-pointer hover:shadow-lg"
               tabIndex="0"
-              role="region"
-              aria-label="Audio Support feature"
+              role="listitem"
+              aria-label="Assistance audio : Lecteur audio pour écouter les explications"
             >
               {
                 <Headphones
@@ -168,16 +179,16 @@ export default function LabIALanding() {
                   aria-hidden="true"
                 />
               }
-              <h3 className="font-semibold">Assistance audio </h3>
-              <p className="text-sm text-gray-600 mt-2">
+              <h3 className="font-semibold" aria-label="Assistance audio">Assistance audio </h3>
+              <p className="text-sm text-gray-600 mt-2" aria-label="Fonctionnalités d'accessibilité conformes à la norme WCAG 2.2.">
                 Fonctionnalités d'accessibilité conformes à la norme WCAG 2.2.
               </p>
             </article>
             <article 
               className="flex flex-col border rounded-xl p-6 text-center bg-white items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 transition-all cursor-pointer hover:shadow-lg"
               tabIndex="0"
-              role="region"
-              aria-label="Keyboard Navigation feature"
+              role="listitem"
+              aria-label="Navigation clavier : Accès complet via le clavier"
             >
               {
                 <Keyboard
@@ -186,16 +197,16 @@ export default function LabIALanding() {
                   aria-hidden="true"
                 />
               }
-              <h3 className="font-semibold">Navigation Clavier</h3>
-              <p className="text-sm text-gray-600 mt-2">
+              <h3 className="font-semibold" aria-label="Navigation clavier">Navigation Clavier</h3>
+              <p className="text-sm text-gray-600 mt-2" aria-label="Fonctionnalités d'accessibilité conformes à la norme WCAG 2.2.">
                 Fonctionnalités d'accessibilité conformes à la norme WCAG 2.2.
               </p>
             </article>
             <article 
               className="flex flex-col border rounded-xl p-6 text-center bg-white items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-700 transition-all cursor-pointer hover:shadow-lg"
               tabIndex="0"
-              role="region"
-              aria-label="Inclusive Design feature"
+              role="listitem"
+              aria-label="Design inclusif : Conception pour tous les utilisateurs"
             >
               {
                 <Accessibility
@@ -204,8 +215,8 @@ export default function LabIALanding() {
                   aria-hidden="true"
                 />
               }
-              <h3 className="font-semibold">Design Inclusif</h3>
-              <p className="text-sm text-gray-600 mt-2">
+              <h3 className="font-semibold" aria-label="Design inclusif">Design Inclusif</h3>
+              <p className="text-sm text-gray-600 mt-2" aria-label="Fonctionnalités d'accessibilité conformes à la norme WCAG 2.2.">
                 Fonctionnalités d'accessibilité conformes à la norme WCAG 2.2.
               </p>
             </article>
