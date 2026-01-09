@@ -17,28 +17,9 @@ import {
 export default function LabIALanding() {
   return (
     <div className="min-h-screen bg-raspberry-700 text-gray-800">
-      {/* Skip link
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-blue-600 text-white px-3 py-1 rounded"
-      >
-        Skip to main content
-      </a> */}
-      <HomeHeader />
+     
       {/* Header */}
-      {/* <header className="flex items-center justify-between px-6 py-4 border-b">
-        <div className="flex items-center gap-2 font-bold text-xl text-white">
-          <span className="bg-raspberry-200 text-white rounded-full w-8 h-8 flex items-center justify-center">
-            logo
-          </span>
-          Lab'IA
-        </div>
-        <nav className="hidden md:flex gap-6 text-sm">
-          <a href="#how">How it Works</a>
-          <a href="#accessibility">Accessibility</a>
-          <a href="#security">Security</a>
-        </nav>
-      </header> */}
+      <HomeHeader />
 
       {/* Hero */}
       <main id="main" className="bg-raspberry-50">

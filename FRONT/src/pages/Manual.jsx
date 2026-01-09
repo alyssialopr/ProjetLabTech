@@ -5,7 +5,6 @@ import Header from "../components/Header";
 import FooterAnalysis from "../components/FooterAnalisys";
 import UiButton from "../components/UiButton";
 
-
 export default function Manual() {
   const navigate = useNavigate();
 
