@@ -250,7 +250,7 @@ export default function LabIALanding() {
         {/* CTA */}
         <section className="bg-raspberry-500 text-white py-16 text-center">
           <h2 className="text-2xl font-bold mb-4">
-            Ready to understand your health better?
+            Prêt à comprendre mieux votre santé ?
           </h2>
           <p className="mb-6">Join thousands of users who trust Lab'IA.</p>
           <button className="bg-white text-raspberry-600 px-6 py-3 rounded-2xl">

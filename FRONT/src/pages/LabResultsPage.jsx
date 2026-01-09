@@ -171,9 +171,8 @@ export default function LabResultsPage() {
 
           {/* Disclaimer Footer */}
           <p className="text-xs text-gray-500 text-center mt-6 border-t pt-4">
-            This tool provides educational information only. Always consult
-            qualified healthcare professionals for medical advice, diagnosis, or
-            treatment.
+            Cet outil est à but informatif uniquement et ne remplace pas un avis
+            médical professionnel. 
           </p>
         </div>
       </div>
