@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import UiButton from "../components/UiButton";
 import { Smile, Frown, Meh } from "lucide-react";
 import Header from "../components/Header";
+import { useNavigate } from "react-router-dom";
+
 
 export default function LabResultsPage() {
+  const navigate = useNavigate();
+
   const [results] = useState([
     {
       id: 1,
