@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../components/Header";
-import HomeHeader from "../components/HomeHeader";
 import UiButton from "../components/UiButton";
 import { useNavigate } from "react-router-dom";
 
@@ -24,7 +23,7 @@ export default function LabIALanding() {
     <div className="min-h-screen bg-raspberry-700 text-gray-800">
      
       {/* Header */}
-      <HomeHeader />
+      <Header />
 
       {/* Skip to main content link */}
       <a 

@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TextSizeControl from "./TextSizeControl";
 import UiButton from "./UiButton";
 
 export default function HomeHeader() {
-  const [fontSize, setFontSize] = useState(16);
   const navigate = useNavigate();
 
   return (
@@ -63,7 +61,6 @@ export default function HomeHeader() {
 
           <div
             className="flex flex-col text-left"
-            style={{ fontSize: `${fontSize}px` }}
           >
             <p className="text-xl font-medium text-raspberry-900">
               Assistant d’analyse de résultats médicaux
@@ -79,10 +76,6 @@ export default function HomeHeader() {
           className="flex items-center gap-4"
           aria-label="Actions de l’en-tête"
         >
-          <TextSizeControl
-            fontSize={fontSize}
-            setFontSize={setFontSize}
-          />
 
           <UiButton
             bg="raspberry"

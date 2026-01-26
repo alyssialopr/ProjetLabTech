@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import HomeHeader from "../components/HomeHeader";
+import Header from "../components/Header";
 import {
   ChevronDown,
   Upload,
@@ -76,14 +76,13 @@ export default function Help() {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
-      <HomeHeader />
+      <Header />
 
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-raspberry-700 text-white px-3 py-1 rounded z-50">
         Aller au contenu principal
       </a>
 
       <main id="main-content" className="bg-white py-16" role="main">
-        {/* Header */}
         <header className="mx-auto max-w-6xl px-6 py-12 text-center">
           <h1 className="text-4xl font-bold mb-4" id="page-title">Comment utiliser Lab'IA</h1>
           <p className="text-lg text-gray-600" id="page-description">
@@ -92,7 +91,6 @@ export default function Help() {
           </p>
         </header>
 
-        {/* Getting Started Guide */}
         <section className="mx-auto max-w-6xl px-6 py-12" aria-labelledby="guide-title">
           <h2 className="text-3xl font-bold mb-10 text-center" id="guide-title">Guide de démarrage</h2>
           <div className="grid md:grid-cols-3 gap-8" role="list">
@@ -125,11 +123,9 @@ export default function Help() {
           </div>
         </section>
 
-        {/* Detailed Features */}
         <section className="mx-auto max-w-6xl px-6 py-12 bg-gray-50 rounded-xl" aria-labelledby="features-title">
           <h2 className="text-3xl font-bold mb-10 text-center" id="features-title">Fonctionnalités principales</h2>
           <div className="grid md:grid-cols-2 gap-8" role="list">
-            {/* Upload Section */}
             <article className="bg-white p-8 rounded-xl shadow-sm" role="listitem">
               <div className="flex items-center gap-4 mb-4">
                 <Upload size={32} className="text-raspberry-700" aria-hidden="true" />
@@ -143,7 +139,6 @@ export default function Help() {
               </ul>
             </article>
 
-            {/* Analysis Section */}
             <article className="bg-white p-8 rounded-xl shadow-sm" role="listitem">
               <div className="flex items-center gap-4 mb-4">
                 <FileText size={32} className="text-green-700" aria-hidden="true" />
@@ -157,7 +152,6 @@ export default function Help() {
               </ul>
             </article>
 
-            {/* Audio Section */}
             <article className="bg-white p-8 rounded-xl shadow-sm" role="listitem">
               <div className="flex items-center gap-4 mb-4">
                 <Headphones size={32} className="text-blue-700" aria-hidden="true" />
@@ -171,7 +165,6 @@ export default function Help() {
               </ul>
             </article>
 
-            {/* Security Section */}
             <article className="bg-white p-8 rounded-xl shadow-sm" role="listitem">
               <div className="flex items-center gap-4 mb-4">
                 <Shield size={32} className="text-purple-700" aria-hidden="true" />
@@ -187,7 +180,6 @@ export default function Help() {
           </div>
         </section>
 
-        {/* Tips & Best Practices */}
         <section className="mx-auto max-w-6xl px-6 py-12" aria-labelledby="tips-title">
           <h2 className="text-3xl font-bold mb-10 text-center" id="tips-title">Conseils d'utilisation</h2>
           <div className="grid md:grid-cols-2 gap-6" role="list">
@@ -249,7 +241,6 @@ export default function Help() {
           </div>
         </section>
 
-        {/* FAQ Section */}
         <section className="mx-auto max-w-4xl px-6 py-12" aria-labelledby="faq-title">
           <h2 className="text-3xl font-bold mb-10 text-center" id="faq-title">
             Questions fréquemment posées
@@ -295,7 +286,6 @@ export default function Help() {
           </div>
         </section>
 
-        {/* Contact Support */}
         <section className="bg-raspberry-100 mx-auto max-w-6xl px-6 py-12 rounded-xl mt-12" aria-labelledby="contact-title">
           <div className="text-center">
             <h2 className="text-3xl font-bold mb-4" id="contact-title">Besoin d'aide supplémentaire ?</h2>
@@ -322,7 +312,6 @@ export default function Help() {
         </section>
       </main>
 
-      {/* Footer */}
       <footer className="bg-gray-900 text-gray-300 text-sm py-10 mt-12" role="contentinfo">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-6">
           <nav aria-label="À propos de Lab'IA">

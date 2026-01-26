@@ -40,23 +40,29 @@ export default function Manual() {
 
       <main
         id="main-content"
+        role="main"
+        aria-labelledby="page-title"
         className="flex-1 flex items-center justify-center px-4 pt-24"
       >
         <div className="max-w-[640px] w-full flex flex-col gap-6">
+
           <div className="flex items-start justify-between">
             <div>
-              <h1 className="text-base font-normal text-raspberry-900">
+              <h1
+                id="page-title"
+                className="text-base font-normal text-raspberry-900"
+              >
                 Construisez votre liste de tests
               </h1>
               <p className="text-base font-normal text-raspberry-700">
-                Ajouter les tests que vous souhaitez analyser
+                Ajoutez les tests que vous souhaitez analyser
               </p>
             </div>
 
             <button
               type="button"
               onClick={() => navigate("/analysis")}
-              aria-label="Close and return to analysis"
+              aria-label="Fermer et revenir à l’analyse"
               className="focus:outline-none focus:ring-2 focus:ring-raspberry-500 rounded"
             >
               <X className="text-raspberry-900" aria-hidden="true" />
@@ -71,39 +77,35 @@ export default function Manual() {
               id="patient-info-title"
               className="text-sm font-medium text-raspberry-900"
             >
-              Informations patient
+              Informations du patient
             </h2>
 
-            {/* Sexe */}
-            <div className="flex flex-col gap-2">
-              <span className="text-sm text-raspberry-900">Sexe</span>
+            <div
+              role="radiogroup"
+              aria-labelledby="label-sexe"
+              className="flex flex-col gap-2"
+            >
+              <span id="label-sexe" className="text-sm text-raspberry-900">
+                Sexe
+              </span>
 
               <div className="flex gap-3">
-                <button
-                  type="button"
-                  onClick={() => setSex("homme")}
-                  className={`px-4 py-2 rounded-lg border-2 text-sm transition
-          ${
-            sex === "homme"
-              ? "bg-raspberry-600 text-white border-raspberry-600"
-              : "border-raspberry-200 text-raspberry-700"
-          }`}
-                >
-                  Homme
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setSex("femme")}
-                  className={`px-4 py-2 rounded-lg border-2 text-sm transition
-          ${
-            sex === "femme"
-              ? "bg-raspberry-600 text-white border-raspberry-600"
-              : "border-raspberry-200 text-raspberry-700"
-          }`}
-                >
-                  Femme
-                </button>
+                {["homme", "femme"].map((value) => (
+                  <button
+                    key={value}
+                    role="radio"
+                    aria-checked={sex === value}
+                    onClick={() => setSex(value)}
+                    className={`px-4 py-2 rounded-lg border-2 text-sm transition
+                    ${
+                      sex === value
+                        ? "bg-raspberry-600 text-white border-raspberry-600"
+                        : "border-raspberry-200 text-raspberry-700"
+                    }`}
+                  >
+                    {value === "homme" ? "Homme" : "Femme"}
+                  </button>
+                ))}
               </div>
             </div>
 
@@ -119,17 +121,23 @@ export default function Manual() {
                 max="120"
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
-                placeholder="ex: 28"
+                aria-label="Âge du patient"
+                aria-describedby="age-help"
+                placeholder="ex : 28"
                 className="
-        border-2 border-raspberry-200
-        rounded-lg
-        px-3 py-2
-        text-sm
-        focus:outline-none
-        focus:ring-2
-        focus:ring-raspberry-500
-      "
+                  border-2 border-raspberry-200
+                  rounded-lg
+                  px-3 py-2
+                  text-sm
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-raspberry-500
+                "
               />
+
+              <span id="age-help" className="sr-only">
+                Entrez l’âge du patient en années
+              </span>
             </div>
           </section>
 
@@ -147,38 +155,39 @@ export default function Manual() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="flex items-center gap-3">
                 <label htmlFor="test-name" className="sr-only">
-                  Entrez un nom de test
+                  Nom du test à ajouter
                 </label>
 
                 <input
                   id="test-name"
                   value={testName}
                   onChange={(e) => setTestName(e.target.value)}
-                  placeholder="e.g., Hemoglobin, Glucose"
+                  aria-label="Nom du test à ajouter"
+                  placeholder="ex : Hémoglobine, Glucose"
                   className="
-          flex-1
-          border-2 border-raspberry-200
-          rounded-lg
-          px-3 py-2
-          text-sm
-          focus:outline-none
-          focus:ring-2
-          focus:ring-raspberry-500
-        "
+                    flex-1
+                    border-2 border-raspberry-200
+                    rounded-lg
+                    px-3 py-2
+                    text-sm
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-raspberry-500
+                  "
                 />
 
                 <button
                   type="submit"
-                  aria-label="Add test"
+                  aria-label="Ajouter le test à la liste"
                   className="
-          flex items-center gap-1
-          text-raspberry-700
-          px-3 py-2
-          rounded-lg
-          focus:outline-none
-          focus:ring-2
-          focus:ring-raspberry-500
-        "
+                    flex items-center gap-1
+                    text-raspberry-700
+                    px-3 py-2
+                    rounded-lg
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-raspberry-500
+                  "
                 >
                   <Plus size={18} aria-hidden="true" />
                   <span className="text-sm">Ajouter</span>
@@ -191,17 +200,17 @@ export default function Manual() {
                     key={test}
                     type="button"
                     onClick={() => addTest(test)}
-                    aria-label={`Add ${test}`}
+                    aria-label={`Ajouter le test ${test}`}
                     className="
-            px-3 py-1
-            rounded-lg
-            bg-raspberry-100
-            border border-raspberry-200
-            text-sm
-            focus:outline-none
-            focus:ring-2
-            focus:ring-raspberry-500
-          "
+                      px-3 py-1
+                      rounded-lg
+                      bg-raspberry-100
+                      border border-raspberry-200
+                      text-sm
+                      focus:outline-none
+                      focus:ring-2
+                      focus:ring-raspberry-500
+                    "
                   >
                     {test}
                   </button>
@@ -221,7 +230,11 @@ export default function Manual() {
               Vos tests ({tests.length})
             </h2>
 
-            <ul aria-live="polite" className="flex flex-col gap-2">
+            <ul
+              aria-live="polite"
+              aria-label="Liste des tests sélectionnés"
+              className="flex flex-col gap-2"
+            >
               {tests.map((test, index) => (
                 <li
                   key={`${test}-${index}`}
@@ -232,7 +245,7 @@ export default function Manual() {
                   <button
                     type="button"
                     onClick={() => removeTest(index)}
-                    aria-label={`Remove ${test}`}
+                    aria-label={`Supprimer le test ${test}`}
                     className="focus:outline-none focus:ring-2 focus:ring-raspberry-500 rounded"
                   >
                     <Trash2
@@ -246,10 +259,12 @@ export default function Manual() {
             </ul>
           </section>
 
+          {/* Bouton Suivant */}
           {tests.length > 0 && sex && age && (
             <UiButton
               bg="raspberry"
               text="white"
+              aria-label="Continuer pour entrer les valeurs des tests"
               onClick={() =>
                 navigate("/manual/values", {
                   state: {
