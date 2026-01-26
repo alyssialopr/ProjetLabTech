@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-// import Home from "./pages/Home";
 import LabIALanding from "./pages/LabIALanding";
 import LabResultsPage from "./pages/LabResultsPage";
 import Analysis from "./pages/Analysis";
@@ -12,8 +11,8 @@ export const router = createBrowserRouter([
   { path: "/", element: <LabIALanding /> },
   { path: "/analysis", element: <Analysis /> },
   { path: "/upload", element: <Upload /> },
-  { path: "/manual", element: <Manual /> },
-  { path: "/manual/values", element: <ManualValues />},
-  { path: "/results", element: <LabResultsPage /> },
-  { path: "/help", element: <Help /> }
+  { path: "/manual", element: <Manual />},
+  { path: "/manual/values", element: <ManualValues /> },
+  { path: "/results", element: <LabResultsPage />},
+  { path: "/help", element: <Help />}
 ]);
