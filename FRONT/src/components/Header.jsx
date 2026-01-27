@@ -28,7 +28,12 @@ export default function Header() {
             className="text-2xl font-black text-raspberry-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-raspberry-500"
             aria-label="Retour à l’accueil – Assistant d’analyse de résultats médicaux"
           >
-            <span aria-hidden="true">🐾</span>
+              <img
+      src="./logo.png"
+      alt=""
+      className="h-14 w-auto mr-4"   
+      aria-hidden="true"
+    />
           </button>
 
           <div
