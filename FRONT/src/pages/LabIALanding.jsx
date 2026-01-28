@@ -283,9 +283,9 @@ export default function LabIALanding() {
         </section>
       </main>
 {/* Footer */}
-<footer className="bg-white text-raspberry-900 text-sm py-10 border-raspberry-900">
-  <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-6">
-    <div>
+<footer className="bg-white text-raspberry-900 text-sm py-10 border-t border-raspberry-900">
+  <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6">
+    <div className="max-w-xs mx-auto">
       <h4 className="font-semibold mb-2">Lab'IA</h4>
       <p>Rendre les résultats médicaux compréhensibles pour tous.</p>
     </div>
@@ -294,19 +294,19 @@ export default function LabIALanding() {
       <h4 className="font-semibold mb-2">Légal</h4>
       <ul className="space-y-1">
         <li>
-          <p className="text-raspberry-900 hover:underline" href="">
-            Condition d'utilisation
-          </p>
+          <a className="text-raspberry-900 hover:underline" href="#">
+            Conditions d'utilisation
+          </a>
         </li>
         <li>
-          <p className="text-raspberry-900 hover:underline" href="#">
+          <a className="text-raspberry-900 hover:underline" href="#">
             Politique de confidentialité
-          </p>
+          </a>
         </li>
         <li>
-          <p className="text-raspberry-900 hover:underline" href="#">
+          <a className="text-raspberry-900 hover:underline" href="#">
             Politique des cookies
-          </p>
+          </a>
         </li>
       </ul>
     </div>
