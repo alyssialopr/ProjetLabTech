@@ -36,18 +36,24 @@ export default function Upload() {
 
       <main
         id="main-content"
+        role="main"
+        aria-labelledby="page-title"
         className="flex-1 flex items-center justify-center px-4"
       >
-        <div className="max-w-140 w-full flex flex-col gap-6">
+        <div className="max-w-[560px] w-full flex flex-col gap-6">
+
           <div className="flex items-center justify-between">
-            <h1 className="text-base font-normal text-raspberry-900">
-              Téléchargez votre rapport de laboratoire
+            <h1
+              id="page-title"
+              className="text-base font-normal text-raspberry-900"
+            >
+              Téléversez votre rapport de laboratoire
             </h1>
 
             <button
               type="button"
               onClick={() => navigate("/analysis")}
-              aria-label="Fermer la page de téléchargement"
+              aria-label="Fermer la page de téléversement"
               className="
                 p-2
                 rounded
@@ -62,7 +68,12 @@ export default function Upload() {
 
           <Card
             onClick={!file ? handleClick : undefined}
-            className="w-full h-62"
+            ariaLabel={
+              file
+                ? "Fichier chargé"
+                : "Téléverser un fichier de rapport de laboratoire"
+            }
+            className="w-full h-[248px]"
             icon={
               file ? (
                 <CheckCircle
@@ -86,7 +97,7 @@ export default function Upload() {
             description={
               file
                 ? file.name
-                : "Appuyez sur Entrée ou Espace pour parcourir les fichiers. Formats pris en charge : PDF, CSV, TXT, PNG, JPG"
+                : "Appuyez sur Entrée ou Espace pour parcourir les fichiers. Formats acceptés : PDF, CSV, TXT, PNG, JPG"
             }
           />
 
@@ -97,18 +108,24 @@ export default function Upload() {
             accept=".pdf,.csv,.txt,.png,.jpg,.jpeg"
             onChange={handleFileChange}
             className="sr-only"
+            aria-label="Sélectionner un fichier de rapport de laboratoire"
             aria-describedby="file-upload-hint"
           />
 
           <p id="file-upload-hint" className="sr-only">
-            Formats pris en charge : PDF, CSV, TXT, PNG, JPG
+            Formats acceptés : PDF, CSV, TXT, PNG, JPG. Sélectionnez un fichier à analyser.
           </p>
+
+          <div aria-live="polite" className="sr-only">
+            {file ? `Fichier ${file.name} sélectionné` : ""}
+          </div>
 
           {file && (
             <div className="flex justify-center">
               <button
                 type="button"
                 onClick={removeFile}
+                aria-label="Supprimer le fichier sélectionné"
                 className="
                   text-sm
                   text-raspberry-700
@@ -127,12 +144,14 @@ export default function Upload() {
             <UiButton
               bg="raspberry"
               text="white"
+              aria-label="Analyser le rapport sélectionné"
               onClick={() => navigate("/results")}
               className="w-full py-3 text-base"
             >
               Analyser ce rapport
             </UiButton>
           )}
+
         </div>
       </main>
 

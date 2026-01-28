@@ -14,20 +14,21 @@ export default function ManualValues() {
     <div className="min-h-screen bg-raspberry-50 flex flex-col">
       <Header />
 
-<main
-  id="main-content"
-  tabIndex={-1}
-  className="flex-1 flex justify-center px-4 pt-28 scroll-mt-28"
->
+      <main
+        id="main-content"
+        role="main"
+        aria-labelledby="page-title"
+        tabIndex={-1}
+        className="flex-1 flex justify-center px-4 pt-28 scroll-mt-28"
+      >
+        <div className="max-w-[720px] w-full flex flex-col gap-6">
 
-
-        <div className="max-w-180 w-full flex flex-col gap-6">
-
+          {/* En-tête */}
           <header className="flex items-start gap-4">
             <button
               type="button"
               onClick={() => navigate(-1)}
-              aria-label="Go back to test list"
+              aria-label="Revenir à la liste des tests"
               className="focus:outline-none focus:ring-2 focus:ring-raspberry-500 rounded"
             >
               <ArrowLeft
@@ -37,26 +38,32 @@ export default function ManualValues() {
             </button>
 
             <div>
-              <h1 className="text-base font-normal text-raspberry-900">
+              <h1
+                id="page-title"
+                className="text-base font-normal text-raspberry-900"
+              >
                 Entrez vos valeurs de test
               </h1>
+
               <p className="text-base font-normal text-raspberry-700">
-                Remplissez les valeurs de votre rapport de laboratoire pour chaque test que vous avez ajouté
+                Renseignez les valeurs de votre rapport de laboratoire pour chaque test ajouté.
               </p>
             </div>
           </header>
 
+          {/* Liste des tests */}
           <section
             aria-labelledby="test-values-title"
             className="flex flex-col gap-4"
           >
             <h2 id="test-values-title" className="sr-only">
-              Formulaire de valeurs de test
+              Formulaire de saisie des valeurs de test
             </h2>
 
             <ul
               className="flex flex-col gap-4"
               aria-live="polite"
+              aria-label="Liste des tests à renseigner"
             >
               {tests.map((test) => (
                 <li key={test}>
@@ -66,14 +73,17 @@ export default function ManualValues() {
             </ul>
           </section>
 
+          {/* Bouton final */}
           <UiButton
             bg="raspberry"
             text="white"
+            aria-label="Lancer l’analyse des résultats"
             className="w-full py-3 text-base"
             onClick={() => navigate("/results")}
           >
-            Analyse des résultats
+            Analyser les résultats
           </UiButton>
+
         </div>
       </main>
 

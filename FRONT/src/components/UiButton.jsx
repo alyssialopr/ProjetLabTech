@@ -10,7 +10,6 @@ const textColors = {
   raspberry: "text-raspberry-700",
 };
 
-
 export default function UiButton({
   children,
   onClick,
@@ -19,12 +18,18 @@ export default function UiButton({
   disabled = false,
   ariaLabel,
   className = "",
+  type = "button",
 }) {
+  const hasText =
+    typeof children === "string" ||
+    (Array.isArray(children) && children.some(c => typeof c === "string"));
+
   return (
     <button
+      type={type}
       onClick={onClick}
       disabled={disabled}
-      aria-label={ariaLabel}
+      {...(!hasText && ariaLabel ? { "aria-label": ariaLabel } : {})}
       className={`
         px-4 py-2
         rounded-2xl

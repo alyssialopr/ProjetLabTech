@@ -1,5 +1,9 @@
 export default function TestValueCard({ name }) {
-  const safeId = name.replace(/\s+/g, "-").toLowerCase();
+  const safeId = name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-")
+    .toLowerCase();
 
   return (
     <fieldset
@@ -13,14 +17,9 @@ export default function TestValueCard({ name }) {
       "
       aria-labelledby={`${safeId}-title`}
     >
-      <legend className="sr-only">{name}</legend>
-
-      <h2
-        id={`${safeId}-title`}
-        className="text-sm font-semibold text-raspberry-900"
-      >
+      <legend id={`${safeId}-title`} className="text-sm font-semibold text-raspberry-900">
         {name}
-      </h2>
+      </legend>
 
       <div className="grid grid-cols-2 gap-4">
         <div className="flex flex-col gap-1">
@@ -33,9 +32,11 @@ export default function TestValueCard({ name }) {
 
           <input
             id={`${safeId}-value`}
-            type="text"
+            name={`${safeId}-value`}
+            type="number"
             inputMode="decimal"
-            placeholder="e.g., 14.2"
+            step="any"
+            placeholder="Exemple : 14,2"
             className="
               border-2 border-raspberry-200
               rounded-lg
@@ -58,6 +59,7 @@ export default function TestValueCard({ name }) {
 
           <select
             id={`${safeId}-unit`}
+            name={`${safeId}-unit`}
             defaultValue=""
             className="
               border-2 border-raspberry-200
@@ -71,23 +73,23 @@ export default function TestValueCard({ name }) {
             "
           >
             <option value="" disabled>
-              Selectionnez une unité
+              Sélectionnez une unité
             </option>
-            <option value="g/dL">g/dL</option>
-            <option value="mg/dL">mg/dL</option>
-            <option value="mmol/L">mmol/L</option>
-            <option value="µmol/L">µmol/L</option>
-            <option value="10^9/L">10⁹/L</option>
-            <option value="U/L">U/L</option>
-            <option value="%">%</option>
+            <option value="g/dL">g par décilitre</option>
+            <option value="mg/dL">milligrammes par décilitre</option>
+            <option value="mmol/L">millimoles par litre</option>
+            <option value="µmol/L">micromoles par litre</option>
+            <option value="10^9/L">10 puissance 9 par litre</option>
+            <option value="U/L">unités par litre</option>
+            <option value="%">pourcentage</option>
           </select>
         </div>
       </div>
 
-      <div className="flex flex-col gap-1">
-        <span className="text-sm font-medium text-raspberry-900">
+      <fieldset className="flex flex-col gap-1">
+        <legend className="text-sm font-medium text-raspberry-900">
           Plage de référence (optionnel)
-        </span>
+        </legend>
 
         <div className="flex items-center gap-2">
           <label htmlFor={`${safeId}-min`} className="sr-only">
@@ -96,8 +98,11 @@ export default function TestValueCard({ name }) {
 
           <input
             id={`${safeId}-min`}
-            type="text"
-            placeholder="Min"
+            name={`${safeId}-min`}
+            type="number"
+            inputMode="decimal"
+            step="any"
+            placeholder="Minimum"
             className="
               w-full
               border-2 border-raspberry-200
@@ -110,7 +115,8 @@ export default function TestValueCard({ name }) {
             "
           />
 
-          <span className="text-sm text-raspberry-700" aria-hidden="true">
+          <span className="sr-only">à</span>
+          <span aria-hidden="true" className="text-sm text-raspberry-700">
             à
           </span>
 
@@ -120,8 +126,11 @@ export default function TestValueCard({ name }) {
 
           <input
             id={`${safeId}-max`}
-            type="text"
-            placeholder="Max"
+            name={`${safeId}-max`}
+            type="number"
+            inputMode="decimal"
+            step="any"
+            placeholder="Maximum"
             className="
               w-full
               border-2 border-raspberry-200
@@ -134,7 +143,7 @@ export default function TestValueCard({ name }) {
             "
           />
         </div>
-      </div>
+      </fieldset>
     </fieldset>
   );
 }
