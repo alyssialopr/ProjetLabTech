@@ -291,42 +291,21 @@ export default function LabIALanding() {
     </div>
 
     <div>
-      <h4 className="font-semibold mb-2">Legal</h4>
+      <h4 className="font-semibold mb-2">Légal</h4>
       <ul className="space-y-1">
         <li>
           <p className="text-raspberry-900 hover:underline" href="">
-            Terms of Service
+            Condition d'utilisation
           </p>
         </li>
         <li>
           <p className="text-raspberry-900 hover:underline" href="#">
-            Privacy Policy
+            Politique de confidentialité
           </p>
         </li>
         <li>
           <p className="text-raspberry-900 hover:underline" href="#">
-            Cookie Policy
-          </p>
-        </li>
-      </ul>
-    </div>
-
-    <div>
-      <h4 className="font-semibold mb-2">Compliance</h4>
-      <ul className="space-y-1">
-        <li>
-          <p className="text-raspberry-900 hover:underline" href="#">
-            GDPR Compliance
-          </p>
-        </li>
-        <li>
-          <p className="text-raspberry-900 hover:underline" href="#">
-            Accessibility Statement
-          </p>
-        </li>
-        <li>
-          <p className="text-raspberry-900 hover:underline" href="#">
-            Legal Disclaimer
+            Politique des cookies
           </p>
         </li>
       </ul>
@@ -339,7 +318,7 @@ export default function LabIALanding() {
   </div>
 
   <p className="text-center mt-8 text-xs">
-    © 2025 Lab'IA. All rights reserved.
+    © 2025 Lab'IA. Tous droits réservés.
   </p>
 </footer>
 
