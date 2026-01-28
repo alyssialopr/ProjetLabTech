@@ -13,7 +13,7 @@ export default function HomeHeader() {
           absolute
           top-0
           left-0
-          z-[100]
+          z-100
           -translate-y-full
           focus:translate-y-0
           transition-transform

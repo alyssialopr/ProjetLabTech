@@ -21,7 +21,7 @@ export default function Card({
       aria-label={ariaLabel}
 
       className={`
-        w-[480px] h-[248.8px]
+        w-120 h-64
         bg-white
         border-2 border-raspberry-700
         rounded-xl
