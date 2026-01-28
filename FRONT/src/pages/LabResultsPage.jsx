@@ -74,11 +74,11 @@ export default function LabResultsPage() {
       >
         Aller au contenu principal
       </a>
+          <Header />
 
       <div className="max-w-4xl mx-auto p-6 space-y-6">
         <div className="w-full h-full">
           {/* Header */}
-          <Header />
 
           {/* New Analysis Button */}
           <div className="mt-24 flex justify-end">

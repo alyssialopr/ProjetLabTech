@@ -20,7 +20,7 @@ import {
 export default function LabIALanding() {
   const navigate = useNavigate();
   return (
-    <div className="min-h-screen bg-raspberry-700 text-gray-800">
+    <div className="min-h-screen bg-raspberry-50 text-gray-800">
      
       {/* Header */}
       <Header />

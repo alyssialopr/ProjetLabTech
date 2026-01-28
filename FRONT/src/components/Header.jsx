@@ -36,7 +36,7 @@ export default function Header() {
 
       <header
         role="banner"
-        className="fixed top-0 left-0 w-full flex items-center justify-between px-6 py-4 bg-white shadow-md border-b-2 border-raspberry-700 z-50"
+        className="w-full flex items-center justify-between px-6 py-4 bg-white shadow-md border-b-2 border-raspberry-700 z-50"
       >
         <div className="flex items-center gap-3">
           <button
@@ -78,14 +78,19 @@ export default function Header() {
           aria-label="Actions principales de l’en-tête"
         >
           {isHomePage && (
-            <UiButton
-              bg="raspberry"
-              text="white"
-              onClick={() => console.log("Comment ça marche ?")}
-              aria-label="Découvrir comment fonctionne l’application"
-            >
-              Comment ça marche ?
-            </UiButton>
+             <UiButton
+    bg="raspberry"
+    text="white"
+    onClick={() => {
+      const section = document.getElementById("how");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }}
+    aria-label="Découvrir comment fonctionne l’application"
+  >
+    Comment ça marche ?
+  </UiButton>
           )}
 
           {isAnalysisPage && (
