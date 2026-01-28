@@ -21,7 +21,7 @@ export default function ManualValues() {
 >
 
 
-        <div className="max-w-[720px] w-full flex flex-col gap-6">
+        <div className="max-w-180 w-full flex flex-col gap-6">
 
           <header className="flex items-start gap-4">
             <button

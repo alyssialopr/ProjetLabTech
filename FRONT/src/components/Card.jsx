@@ -5,7 +5,7 @@ export default function Card({ icon, title, description, className, onClick }) {
       role="button"
       onClick={onClick}
       className={`
-        w-[480px] h-[248.8px]
+        w-120 h-64
         bg-white
         border-2 border-raspberry-700
         rounded-xl
@@ -35,7 +35,7 @@ export default function Card({ icon, title, description, className, onClick }) {
         {title}
       </h2>
 
-      <p className="text-base font-normal text-raspberry-700 text-center max-w-[400px]">
+      <p className="text-base font-normal text-raspberry-700 text-center max-w-100">
         {description}
       </p>
     </button>

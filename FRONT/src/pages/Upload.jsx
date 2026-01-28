@@ -38,7 +38,7 @@ export default function Upload() {
         id="main-content"
         className="flex-1 flex items-center justify-center px-4"
       >
-        <div className="max-w-[560px] w-full flex flex-col gap-6">
+        <div className="max-w-140 w-full flex flex-col gap-6">
           <div className="flex items-center justify-between">
             <h1 className="text-base font-normal text-raspberry-900">
               Téléchargez votre rapport de laboratoire
@@ -62,7 +62,7 @@ export default function Upload() {
 
           <Card
             onClick={!file ? handleClick : undefined}
-            className="w-full h-[248px]"
+            className="w-full h-62"
             icon={
               file ? (
                 <CheckCircle
