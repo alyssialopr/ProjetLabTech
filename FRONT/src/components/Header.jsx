@@ -12,7 +12,24 @@ export default function Header() {
     <>
       <a
         href="#main-content"
-        className="absolute top-0 left-0 z-[100] -translate-y-full focus:translate-y-0 transition-transform bg-white text-raspberry-900 px-4 py-2 rounded-br-md shadow-lg focus:outline-none focus:ring-2 focus:ring-raspberry-500"
+        className="
+          absolute
+          top-0
+          left-0
+          z-100
+          -translate-y-full
+          focus:translate-y-0
+          transition-transform
+          bg-white
+          text-raspberry-900
+          px-4
+          py-2
+          rounded-br-md
+          shadow-lg
+          focus:outline-none
+          focus:ring-2
+          focus:ring-raspberry-500
+        "
       >
         Aller au contenu principal
       </a>

@@ -14,14 +14,14 @@ export default function ManualValues() {
     <div className="min-h-screen bg-raspberry-50 flex flex-col">
       <Header />
 
-      <main
-        id="main-content"
-        role="main"
-        aria-labelledby="page-title"
-        tabIndex={-1}
-        className="flex-1 flex justify-center px-4 pt-28 scroll-mt-28"
-      >
-        <div className="max-w-[720px] w-full flex flex-col gap-6">
+<main
+  id="main-content"
+  tabIndex={-1}
+  className="flex-1 flex justify-center px-4 pt-28 scroll-mt-28"
+>
+
+
+        <div className="max-w-180 w-full flex flex-col gap-6">
 
           {/* En-tête */}
           <header className="flex items-start gap-4">
