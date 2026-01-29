@@ -26,13 +26,6 @@ export default function LabIALanding() {
       <Header />
 
       {/* Skip to main content link */}
-      <a 
-        href="#main-content" 
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-raspberry-700 text-white px-3 py-1 rounded z-50"
-        aria-label="Aller au contenu principal"
-      >
-        Aller au contenu principal
-      </a>
 
       {/* Hero */}
       <main id="main-content" className="bg-raspberry-50" role="main" aria-label="Contenu principal de Lab'IA">

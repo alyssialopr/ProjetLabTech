@@ -260,12 +260,6 @@ export default function LabResultsPage() {
 
   return (
     <div className="w-screen min-h-screen bg-raspberry-50">
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:bg-purple-600 focus:text-white focus:p-2"
-      >
-        Aller au contenu principal
-      </a>
           <Header />
 
       <div className="max-w-4xl mx-auto p-6 space-y-6">
