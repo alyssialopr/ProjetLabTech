@@ -30,7 +30,7 @@ export default function Header() {
           >
             <img
               src="./logo.png"
-              alt=""
+              alt="Logo Lab'Tech"
               className="h-14 w-auto mr-4"
               aria-hidden="true"
             />
