@@ -52,7 +52,7 @@ export default function Manual() {
         aria-labelledby="page-title"
         className="flex-1 flex items-center justify-center px-4 pt-24"
       >
-        <div className="max-w-[640px] w-full flex flex-col gap-6">
+        <div className="max-w-160 w-full flex flex-col gap-6">
 
           <div className="flex items-start justify-between">
             <div>

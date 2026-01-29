@@ -21,7 +21,7 @@ export default function ManualValues() {
         tabIndex={-1}
         className="flex-1 flex justify-center px-4 pt-28 scroll-mt-28"
       >
-        <div className="max-w-[720px] w-full flex flex-col gap-6">
+        <div className="max-w-180 w-full flex flex-col gap-6">
 
           {/* En-tête */}
           <header className="flex items-start gap-4">
