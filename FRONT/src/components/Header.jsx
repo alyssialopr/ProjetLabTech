@@ -6,7 +6,8 @@ export default function Header() {
   const location = useLocation();
 
   const isHomePage = location.pathname === "/";
-  const isAnalysisPage = location.pathname === "/analysis";
+  const isAnalysisPage = location.pathname === "/results";
+
 
   return (
     <>

@@ -150,6 +150,10 @@ export default function Manual() {
             >
               Nom du test
             </h2>
+            
+            <span id="add-test-label" className="text-sm text-raspberry-900">
+              Taper entrée libre pour ajouter ou choisir parmi les tests courants :
+            </span>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="flex items-center gap-3">
@@ -174,23 +178,6 @@ export default function Manual() {
                     focus:ring-raspberry-500
                   "
                 />
-
-                <button
-                  type="submit"
-                  aria-label="Ajouter le test à la liste"
-                  className="
-                    flex items-center gap-1
-                    text-raspberry-700
-                    px-3 py-2
-                    rounded-lg
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-raspberry-500
-                  "
-                >
-                  <Plus size={18} aria-hidden="true" />
-                  <span className="text-sm">Ajouter</span>
-                </button>
               </div>
 
               <div className="flex flex-wrap gap-2">
