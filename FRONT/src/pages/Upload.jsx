@@ -41,6 +41,7 @@ export default function Upload() {
         className="flex-1 flex items-center justify-center px-4"
       >
         <div className="max-w-140 w-full flex flex-col gap-6">
+
           <div className="flex items-center justify-between">
             <h1
               id="page-title"
@@ -67,6 +68,11 @@ export default function Upload() {
 
           <Card
             onClick={!file ? handleClick : undefined}
+            ariaLabel={
+              file
+                ? "Fichier chargé"
+                : "Téléverser un fichier de rapport de laboratoire"
+            }
             className="w-full h-62"
             icon={
               file ? (
