@@ -1,13 +1,9 @@
 import fetch from "node-fetch";
 
-const PROMPT_TEMPLATE = `
-Explique les résultats du compte rendu biologique suivant
-en langage simple pour un patient.
-commence ta réponse par "Si l'on simplifie".
-Écris UNIQUEMENT l'explication.
-Écris en texte simple
-Ne mets pas smiley.
-
+const PROMPT_TEMPLATE =
+  `
+écris UNIQUEMENT un json qui renvoie le nom de l'élément, son taux, une petite explication
+tu préciseras pour chaque élément la catégirie "corect", "trop élevé", "trop bas"
 """
 {{TEXT_FROM_PDF}}
 """
@@ -34,6 +30,9 @@ export async function generateTextFromPdf(pdfText) {
   if (!response.ok) {
     throw new Error(data.error?.message || "Erreur API Mistral");
   }
-// console.log(data.choices[0].message.content)
-  return data.choices[0].message.content ;
+  let dataJson = data.choices[0].message.content
+  .replace(/^```json\s*\[/, "")
+  .replace(/\]\s*```$/, "");
+    console.log(dataJson)
+  return dataJson;
 }
