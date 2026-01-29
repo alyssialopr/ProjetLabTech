@@ -3,8 +3,10 @@ import fetch from "node-fetch";
 const PROMPT_TEMPLATE = `
 Explique les résultats du compte rendu biologique suivant
 en langage simple pour un patient.
+commence ta réponse par "Si l'on simplifie".
+Écris UNIQUEMENT l'explication.
+Écris en texte simple
 Ne mets pas smiley.
-Fais une mise en page HTML.
 
 """
 {{TEXT_FROM_PDF}}
@@ -32,6 +34,6 @@ export async function generateTextFromPdf(pdfText) {
   if (!response.ok) {
     throw new Error(data.error?.message || "Erreur API Mistral");
   }
-
-  return data.choices[0].message.content;
+// console.log(data.choices[0].message.content)
+  return data.choices[0].message.content ;
 }
