@@ -3,6 +3,8 @@ import fetch from "node-fetch";
 const PROMPT_TEMPLATE = `
 Explique les résultats du compte rendu biologique suivant
 en langage simple pour un patient.
+Ne mets pas smiley.
+Fais une mise en page HTML.
 
 """
 {{TEXT_FROM_PDF}}
