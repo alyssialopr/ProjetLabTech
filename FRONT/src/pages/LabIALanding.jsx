@@ -17,28 +17,9 @@ import {
 export default function LabIALanding() {
   return (
     <div className="min-h-screen bg-raspberry-700 text-gray-800">
-      {/* Skip link
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-blue-600 text-white px-3 py-1 rounded"
-      >
-        Skip to main content
-      </a> */}
-      <HomeHeader />
+     
       {/* Header */}
-      {/* <header className="flex items-center justify-between px-6 py-4 border-b">
-        <div className="flex items-center gap-2 font-bold text-xl text-white">
-          <span className="bg-raspberry-200 text-white rounded-full w-8 h-8 flex items-center justify-center">
-            logo
-          </span>
-          Lab'IA
-        </div>
-        <nav className="hidden md:flex gap-6 text-sm">
-          <a href="#how">How it Works</a>
-          <a href="#accessibility">Accessibility</a>
-          <a href="#security">Security</a>
-        </nav>
-      </header> */}
+      <HomeHeader />
 
       {/* Hero */}
       <main id="main" className="bg-raspberry-50">
@@ -59,7 +40,7 @@ export default function LabIALanding() {
               <span>✔ Gratuit et simple d'utilisation</span>
             </div>
             <div className="flex gap-4">
-              <button className="bg-white text-raspberry-600 px-6 py-3 rounded mt-6">
+              <button className="bg-white text-raspberry-600 px-6 py-3 rounded-2xl mt-6">
                 <a href="/analysis">Commencer</a>
               </button>
             </div>
@@ -77,11 +58,17 @@ export default function LabIALanding() {
             How Lab'IA Works
           </h2>
           <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6">
-            <div className="flex flex-col border rounded-xl p-6 text-center items-center">
+            <article 
+              className="flex flex-col border rounded-xl p-6 text-center items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-raspberry-700 transition-all cursor-pointer hover:shadow-lg"
+              tabIndex="0"
+              role="region"
+              aria-label="Step 1: Upload your medical results"
+            >
               {
                 <Import
                   size={48}
                   className="text-raspberry-700 bg-raspberry-300 rounded-2xl m-4 p-2"
+                  aria-hidden="true"
                 />
               }
               <h3 className="font-semibold mb-2">Upload vos résultats</h3>
@@ -89,12 +76,18 @@ export default function LabIALanding() {
                 Upload your medical test results as a PDF or enter values
                 manually. Your data is encrypted and secure.
               </p>
-            </div>
-            <div className="flex flex-col border rounded-xl p-6 text-center items-center">
+            </article>
+            <article 
+              className="flex flex-col border rounded-xl p-6 text-center items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-700 transition-all cursor-pointer hover:shadow-lg"
+              tabIndex="0"
+              role="region"
+              aria-label="Step 2: AI Analysis of your results"
+            >
               {
                 <Brain
                   size={48}
                   className="text-green-800 bg-green-300 rounded-2xl m-4 p-2"
+                  aria-hidden="true"
                 />
               }
               <h3 className="font-semibold mb-2">AI Analysis</h3>
@@ -102,12 +95,18 @@ export default function LabIALanding() {
                 Our AI analyzes your results and compares them to reference
                 ranges.
               </p>
-            </div>
-            <div className="flex flex-col border rounded-xl p-6 text-center items-center">
+            </article>
+            <article 
+              className="flex flex-col border rounded-xl p-6 text-center items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 transition-all cursor-pointer hover:shadow-lg"
+              tabIndex="0"
+              role="region"
+              aria-label="Step 3: Get clear explanations"
+            >
               {
                 <FilePlusCorner
                   size={48}
                   className="text-blue-800 bg-blue-300 rounded-2xl m-4 p-2"
+                  aria-hidden="true"
                 />
               }
               <h3 className="font-semibold mb-2">Get Clear Explanations</h3>
@@ -115,7 +114,7 @@ export default function LabIALanding() {
                 Receive simple explanations in plain language, with visuals and
                 audio options.
               </p>
-            </div>
+            </article>
           </div>
         </section>
 
@@ -128,54 +127,78 @@ export default function LabIALanding() {
             Designed following WCAG 2.2 AA and RGAA accessibility standards
           </p>
           <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-6">
-            <div className="flex flex-col border rounded-xl p-6 text-center bg-white items-center">
+            <article 
+              className="flex flex-col border rounded-xl p-6 text-center bg-white items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-raspberry-700 transition-all cursor-pointer hover:shadow-lg"
+              tabIndex="0"
+              role="region"
+              aria-label="Visual Accessibility feature"
+            >
               {
                 <Eye
                   size={48}
                   className="text-raspberry-800 bg-raspberry-300 rounded-2xl m-4 p-2"
+                  aria-hidden="true"
                 />
               }
               <h3 className="font-semibold">Visual Accessibility</h3>
               <p className="text-sm text-gray-600 mt-2">
                 WCAG 2.2 compliant accessibility features.
               </p>
-            </div>
-            <div className="flex flex-col border rounded-xl p-6 text-center bg-white items-center">
+            </article>
+            <article 
+              className="flex flex-col border rounded-xl p-6 text-center bg-white items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-700 transition-all cursor-pointer hover:shadow-lg"
+              tabIndex="0"
+              role="region"
+              aria-label="Audio Support feature"
+            >
               {
                 <Headphones
                   size={48}
                   className="text-orange-800 bg-orange-300 rounded-2xl m-4 p-2"
+                  aria-hidden="true"
                 />
               }
               <h3 className="font-semibold">Audio Support</h3>
               <p className="text-sm text-gray-600 mt-2">
                 WCAG 2.2 compliant accessibility features.
               </p>
-            </div>
-            <div className="flex flex-col border rounded-xl p-6 text-center bg-white items-center">
+            </article>
+            <article 
+              className="flex flex-col border rounded-xl p-6 text-center bg-white items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 transition-all cursor-pointer hover:shadow-lg"
+              tabIndex="0"
+              role="region"
+              aria-label="Keyboard Navigation feature"
+            >
               {
                 <Keyboard
                   size={48}
                   className="text-blue-800 bg-blue-300 rounded-2xl m-4 p-2"
+                  aria-hidden="true"
                 />
               }
               <h3 className="font-semibold">Keyboard Navigation</h3>
               <p className="text-sm text-gray-600 mt-2">
                 WCAG 2.2 compliant accessibility features.
               </p>
-            </div>
-            <div className="flex flex-col border rounded-xl p-6 text-center bg-white items-center">
+            </article>
+            <article 
+              className="flex flex-col border rounded-xl p-6 text-center bg-white items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-700 transition-all cursor-pointer hover:shadow-lg"
+              tabIndex="0"
+              role="region"
+              aria-label="Inclusive Design feature"
+            >
               {
                 <Accessibility
                   size={48}
                   className="text-green-800 bg-green-300 rounded-2xl m-4 p-2"
+                  aria-hidden="true"
                 />
               }
               <h3 className="font-semibold">Inclusive Design</h3>
               <p className="text-sm text-gray-600 mt-2">
                 WCAG 2.2 compliant accessibility features.
               </p>
-            </div>
+            </article>
           </div>
         </section>
 
@@ -192,7 +215,7 @@ export default function LabIALanding() {
                 Your Health Data is Protected
               </h2>
               <ul className="flex flex-col text-sm text-gray-600">
-                <li className="flex items-center">
+                <li className="flex items-center" tabIndex="0" role="region" aria-label="GDPR Compliant feature">
                   {
                     <Shield
                       size={40}
@@ -201,7 +224,7 @@ export default function LabIALanding() {
                   }
                   <p> GDPR Compliant</p>
                 </li>
-                <li className="flex items-center">
+                <li className="flex items-center" tabIndex="0" role="region" aria-label="End-to-End Encryption feature">
                   {
                     <Lock
                       size={40}
@@ -210,7 +233,7 @@ export default function LabIALanding() {
                   }
                   <p>End-to-End Encryption</p>
                 </li>
-                <li className="flex items-center">
+                <li className="flex items-center" tabIndex="0" role="region" aria-label="Full Data Control feature">
                   {
                     <File
                       size={40}
@@ -227,10 +250,10 @@ export default function LabIALanding() {
         {/* CTA */}
         <section className="bg-raspberry-500 text-white py-16 text-center">
           <h2 className="text-2xl font-bold mb-4">
-            Ready to understand your health better?
+            Prêt à comprendre mieux votre santé ?
           </h2>
           <p className="mb-6">Join thousands of users who trust Lab'IA.</p>
-          <button className="bg-white text-black px-6 py-3 rounded">
+          <button className="bg-white text-raspberry-600 px-6 py-3 rounded-2xl">
             <a href="/analysis">Commencer</a>
           </button>
         </section>

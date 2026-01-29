@@ -26,11 +26,11 @@ export default function Analysis() {
         "
       >
         <h1 className="text-4xl font-semibold text-raspberry-900">
-          How would you like to start?
+          Comment voulez-vous commencer votre analyse ?
         </h1>
 
         <p className="text-base font-normal text-raspberry-700 max-w-xl">
-          Upload your lab report for instant analysis, or manually enter your test results
+          Téléchargez votre rapport de laboratoire pour une analyse instantanée, ou saisissez manuellement vos résultats de test.
         </p>
 
         <div
@@ -40,15 +40,15 @@ export default function Analysis() {
         >
           <Card
             icon={<UploadCloud size={48} className="text-raspberry-700" />}
-            title="Upload Your Lab Report"
-            description="PDF, CSV, TXT, or images — we'll analyze it for you"
+            title="Téléchargement de votre rapport de laboratoire"
+            description="PDF, CSV, TXT, ou image — nous allons extraire les données pour vous"
             onClick={handleUpload}
           />
 
           <Card
             icon={<Edit3 size={48} className="text-raspberry-700" />}
-            title="Enter Results Manually"
-            description="Build your own test list and fill in your values"
+            title="Saisissez les résultats manuellement"
+            description="Créez votre propre liste de tests et remplissez vos valeurs"
             onClick={handleManual}
           />
         </div>

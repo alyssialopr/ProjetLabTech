@@ -38,10 +38,10 @@ export default function ManualValues() {
 
             <div>
               <h1 className="text-base font-normal text-raspberry-900">
-                Enter Your Test Values
+                Entrez vos valeurs de test
               </h1>
               <p className="text-base font-normal text-raspberry-700">
-                Fill in the values from your lab report
+                Remplissez les valeurs de votre rapport de laboratoire pour chaque test que vous avez ajouté
               </p>
             </div>
           </header>
@@ -51,7 +51,7 @@ export default function ManualValues() {
             className="flex flex-col gap-4"
           >
             <h2 id="test-values-title" className="sr-only">
-              Test values form
+              Formulaire de valeurs de test
             </h2>
 
             <ul
@@ -70,9 +70,9 @@ export default function ManualValues() {
             bg="raspberry"
             text="white"
             className="w-full py-3 text-base"
-            onClick={() => navigate("/result")}
+            onClick={() => navigate("/results")}
           >
-            Analyze Results
+            Analyse des résultats
           </UiButton>
         </div>
       </main>

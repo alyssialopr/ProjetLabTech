@@ -41,13 +41,13 @@ export default function Upload() {
         <div className="max-w-[560px] w-full flex flex-col gap-6">
           <div className="flex items-center justify-between">
             <h1 className="text-base font-normal text-raspberry-900">
-              Upload Your Lab Report
+              Téléchargez votre rapport de laboratoire
             </h1>
 
             <button
               type="button"
               onClick={() => navigate("/analysis")}
-              aria-label="Close upload page"
+              aria-label="Fermer la page de téléchargement"
               className="
                 p-2
                 rounded
@@ -80,13 +80,13 @@ export default function Upload() {
             }
             title={
               file
-                ? "File uploaded successfully"
-                : "Upload your file"
+                ? "Fichier téléchargé avec succès"
+                : "Téléversez votre fichier"
             }
             description={
               file
                 ? file.name
-                : "Press Enter or Space to browse files. Supported: PDF, CSV, TXT, PNG, JPG"
+                : "Appuyez sur Entrée ou Espace pour parcourir les fichiers. Formats pris en charge : PDF, CSV, TXT, PNG, JPG"
             }
           />
 
@@ -101,7 +101,7 @@ export default function Upload() {
           />
 
           <p id="file-upload-hint" className="sr-only">
-            Supported formats: PDF, CSV, TXT, PNG, JPG
+            Formats pris en charge : PDF, CSV, TXT, PNG, JPG
           </p>
 
           {file && (
@@ -118,7 +118,7 @@ export default function Upload() {
                   focus-visible:ring-raspberry-500
                 "
               >
-                Remove file
+                Supprimer le fichier
               </button>
             </div>
           )}
@@ -127,10 +127,10 @@ export default function Upload() {
             <UiButton
               bg="raspberry"
               text="white"
-              onClick={() => navigate("/result")}
+              onClick={() => navigate("/results")}
               className="w-full py-3 text-base"
             >
-              Analyze this report
+              Analyser ce rapport
             </UiButton>
           )}
         </div>

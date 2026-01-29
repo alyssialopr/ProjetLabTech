@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TextSizeControl from "./TextSizeControl";
 import UiButton from "./UiButton";
 
 export default function HomeHeader() {
   const [fontSize, setFontSize] = useState(16);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -43,12 +45,24 @@ export default function HomeHeader() {
         "
       >
         <div className="flex items-center gap-3">
-          <img
-            src="/leogo.svg"
-            alt="Lab Result Assistant"
-            className="h-10 w-10"
-          />
+          {/* Icône patte d’ours cliquable */}
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            aria-label="Retour à l’accueil"
+            className="
+              text-raspberry-900
+              text-2xl
+              font-black
+              focus:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-raspberry-500
+            "
+          >
+            🐾
+          </button>
 
+          {/* Texte */}
           <div
             className="flex flex-col text-left"
             style={{ fontSize: `${fontSize}px` }}
@@ -75,18 +89,9 @@ export default function HomeHeader() {
           <UiButton
             bg="raspberry"
             text="white"
-            onClick={() => console.log("Nouvelle analyse")}
+            onClick={() => console.log("Comment ça marche ?")}
           >
             Comment ça marche ?
-          </UiButton>
-
-
-          <UiButton
-            bg="raspberry"
-            text="white"
-            onClick={() => console.log("Nouvelle analyse")}
-          >
-            Nouvelle analyse
           </UiButton>
         </nav>
       </header>
