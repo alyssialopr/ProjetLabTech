@@ -15,8 +15,16 @@ export default function Manual() {
 
   const commonTests = [
     "Hémoglobine",
-    "Numération des globules blancs",
     "Glucose",
+    "Plaquettes",
+    "Créatinine",
+    "CRP",
+    "Calcium",
+    "Numération des globules rouges (GR)",
+    "Numération des globules blancs",
+    "Cholestérol total",
+    "Triglycérides",
+    "Fer sérique",
   ];
 
   const addTest = (name) => {
@@ -180,6 +188,23 @@ export default function Manual() {
                 />
               </div>
 
+              
+                <a
+  href="#section-suivante"
+  className="
+    text-sm
+    text-raspberry-700
+    underline
+    focus:outline-none
+    focus:ring-2
+    focus:ring-raspberry-500
+    rounded
+    w-fit
+  "
+>
+  Passer à la section suivante
+</a>
+
               <div className="flex flex-wrap gap-2">
                 {commonTests.map((test) => (
                   <button
@@ -203,9 +228,11 @@ export default function Manual() {
                 ))}
               </div>
             </form>
+            
           </section>
 
           <section
+            id="section-suivante"
             className="bg-white rounded-xl border-2 border-raspberry-200 p-6 flex flex-col gap-4"
             aria-labelledby="your-tests-title"
           >
