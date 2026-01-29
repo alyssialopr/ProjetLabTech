@@ -78,9 +78,6 @@ export default function Help() {
     <div className="min-h-screen bg-gray-50 text-gray-800">
       <Header />
 
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-raspberry-700 text-white px-3 py-1 rounded z-50">
-        Aller au contenu principal
-      </a>
 
       <main id="main-content" className="bg-white py-16" role="main">
         <header className="mx-auto max-w-6xl px-6 py-12 text-center">
