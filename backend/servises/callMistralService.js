@@ -34,6 +34,6 @@ export async function generateTextFromPdf(pdfText) {
   if (!response.ok) {
     throw new Error(data.error?.message || "Erreur API Mistral");
   }
-// console.log(data.choices[0].message.content)
-  return data.choices[0].message.content ;
+
+  return data.choices[0].message.content;
 }

@@ -7,9 +7,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.get('/', (req, res) => {
-  res.send('Hello World! 2');
-});
+app.use("/analyse", analyseSammaryRoute);
 
 app.listen(3001, () => {
   console.log("Server running on http://localhost:3001");
