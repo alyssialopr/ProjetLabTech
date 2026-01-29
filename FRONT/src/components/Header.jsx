@@ -5,7 +5,6 @@ export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isHomePage = location.pathname === "/";
   const isAnalysisPage = location.pathname === "/results";
 
 
@@ -13,24 +12,7 @@ export default function Header() {
     <>
       <a
         href="#main-content"
-        className="
-          absolute
-          top-0
-          left-0
-          z-100
-          -translate-y-full
-          focus:translate-y-0
-          transition-transform
-          bg-white
-          text-raspberry-900
-          px-4
-          py-2
-          rounded-br-md
-          shadow-lg
-          focus:outline-none
-          focus:ring-2
-          focus:ring-raspberry-500
-        "
+        className="absolute top-0 left-0 z-100 -translate-y-full focus:translate-y-0 transition-transform bg-white text-raspberry-900 px-4 py-2 rounded-br-md shadow-lg focus:outline-none focus:ring-2 focus:ring-raspberry-500"
       >
         Aller au contenu principal
       </a>
@@ -78,21 +60,7 @@ export default function Header() {
           className="flex items-center gap-4"
           aria-label="Actions principales de l’en-tête"
         >
-          {isHomePage && (
-             <UiButton
-    bg="raspberry"
-    text="white"
-    onClick={() => {
-      const section = document.getElementById("how");
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
-    }}
-    aria-label="Découvrir comment fonctionne l’application"
-  >
-    Comment ça marche ?
-  </UiButton>
-          )}
+          
 
           {isAnalysisPage && (
             <UiButton

@@ -17,12 +17,10 @@ export default function TestValueCard({ name }) {
       "
       aria-labelledby={`${safeId}-title`}
     >
-      {/* Nom du groupe lu par lecteur d’écran */}
       <legend id={`${safeId}-title`} className="text-sm font-semibold text-raspberry-900">
         {name}
       </legend>
 
-      {/* Valeur + unité */}
       <div className="grid grid-cols-2 gap-4">
         <div className="flex flex-col gap-1">
           <label
@@ -88,7 +86,6 @@ export default function TestValueCard({ name }) {
         </div>
       </div>
 
-      {/* Plage de référence */}
       <fieldset className="flex flex-col gap-1">
         <legend className="text-sm font-medium text-raspberry-900">
           Plage de référence (optionnel)
@@ -118,7 +115,6 @@ export default function TestValueCard({ name }) {
             "
           />
 
-          {/* Lu par lecteur d’écran */}
           <span className="sr-only">à</span>
           <span aria-hidden="true" className="text-sm text-raspberry-700">
             à

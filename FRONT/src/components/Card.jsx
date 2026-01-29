@@ -54,7 +54,10 @@ export default function Card({
         {title}
       </h2>
 
-      <p className="text-base font-normal text-raspberry-700 text-center max-w-100">
+      <p
+        id={descId}
+        className="text-base font-normal text-raspberry-700 text-center max-w-[400px]"
+      >
         {description}
       </p>
     </button>
