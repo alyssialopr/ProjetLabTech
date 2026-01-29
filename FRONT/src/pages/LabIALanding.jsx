@@ -20,19 +20,12 @@ import {
 export default function LabIALanding() {
   const navigate = useNavigate();
   return (
-    <div className="min-h-screen bg-raspberry-700 text-gray-800">
+    <div className="min-h-screen bg-raspberry-50 text-gray-800">
      
       {/* Header */}
       <Header />
 
       {/* Skip to main content link */}
-      <a 
-        href="#main-content" 
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-raspberry-700 text-white px-3 py-1 rounded z-50"
-        aria-label="Aller au contenu principal"
-      >
-        Aller au contenu principal
-      </a>
 
       {/* Hero */}
       <main id="main-content" className="bg-raspberry-50" role="main" aria-label="Contenu principal de Lab'IA">
@@ -283,51 +276,30 @@ export default function LabIALanding() {
         </section>
       </main>
 {/* Footer */}
-<footer className="bg-white text-raspberry-900 text-sm py-10 border-raspberry-900">
-  <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-6">
-    <div>
+<footer className="bg-white text-raspberry-900 text-sm py-10 border-t border-raspberry-900">
+  <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6">
+    <div className="max-w-xs mx-auto">
       <h4 className="font-semibold mb-2">Lab'IA</h4>
       <p>Rendre les résultats médicaux compréhensibles pour tous.</p>
     </div>
 
     <div>
-      <h4 className="font-semibold mb-2">Legal</h4>
+      <h4 className="font-semibold mb-2">Légal</h4>
       <ul className="space-y-1">
         <li>
-          <p className="text-raspberry-900 hover:underline" href="">
-            Terms of Service
-          </p>
+          <a className="text-raspberry-900 hover:underline" href="#">
+            Conditions d'utilisation
+          </a>
         </li>
         <li>
-          <p className="text-raspberry-900 hover:underline" href="#">
-            Privacy Policy
-          </p>
+          <a className="text-raspberry-900 hover:underline" href="#">
+            Politique de confidentialité
+          </a>
         </li>
         <li>
-          <p className="text-raspberry-900 hover:underline" href="#">
-            Cookie Policy
-          </p>
-        </li>
-      </ul>
-    </div>
-
-    <div>
-      <h4 className="font-semibold mb-2">Compliance</h4>
-      <ul className="space-y-1">
-        <li>
-          <p className="text-raspberry-900 hover:underline" href="#">
-            GDPR Compliance
-          </p>
-        </li>
-        <li>
-          <p className="text-raspberry-900 hover:underline" href="#">
-            Accessibility Statement
-          </p>
-        </li>
-        <li>
-          <p className="text-raspberry-900 hover:underline" href="#">
-            Legal Disclaimer
-          </p>
+          <a className="text-raspberry-900 hover:underline" href="#">
+            Politique des cookies
+          </a>
         </li>
       </ul>
     </div>
@@ -339,7 +311,7 @@ export default function LabIALanding() {
   </div>
 
   <p className="text-center mt-8 text-xs">
-    © 2025 Lab'IA. All rights reserved.
+    © 2025 Lab'IA. Tous droits réservés.
   </p>
 </footer>
 

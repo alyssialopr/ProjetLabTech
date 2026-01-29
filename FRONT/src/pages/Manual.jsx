@@ -15,8 +15,16 @@ export default function Manual() {
 
   const commonTests = [
     "Hémoglobine",
-    "Numération des globules blancs",
     "Glucose",
+    "Plaquettes",
+    "Créatinine",
+    "CRP",
+    "Calcium",
+    "Numération des globules rouges (GR)",
+    "Numération des globules blancs",
+    "Cholestérol total",
+    "Triglycérides",
+    "Fer sérique",
   ];
 
   const addTest = (name) => {
@@ -151,6 +159,10 @@ export default function Manual() {
             >
               Nom du test
             </h2>
+            
+            <span id="add-test-label" className="text-sm text-raspberry-900">
+              Taper entrée libre pour ajouter ou choisir parmi les tests courants :
+            </span>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="flex items-center gap-3">
@@ -175,24 +187,24 @@ export default function Manual() {
                     focus:ring-raspberry-500
                   "
                 />
-
-                <button
-                  type="submit"
-                  aria-label="Ajouter le test à la liste"
-                  className="
-                    flex items-center gap-1
-                    text-raspberry-700
-                    px-3 py-2
-                    rounded-lg
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-raspberry-500
-                  "
-                >
-                  <Plus size={18} aria-hidden="true" />
-                  <span className="text-sm">Ajouter</span>
-                </button>
               </div>
+
+              
+                <a
+  href="#section-suivante"
+  className="
+    text-sm
+    text-raspberry-700
+    underline
+    focus:outline-none
+    focus:ring-2
+    focus:ring-raspberry-500
+    rounded
+    w-fit
+  "
+>
+  Passer à la section suivante
+</a>
 
               <div className="flex flex-wrap gap-2">
                 {commonTests.map((test) => (
@@ -217,9 +229,11 @@ export default function Manual() {
                 ))}
               </div>
             </form>
+            
           </section>
 
           <section
+            id="section-suivante"
             className="bg-white rounded-xl border-2 border-raspberry-200 p-6 flex flex-col gap-4"
             aria-labelledby="your-tests-title"
           >
