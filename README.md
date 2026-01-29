@@ -65,21 +65,16 @@ ProjetLabTech/
 │   │   ├── styles/         # Styles globaux
 │   │   └── App.js          # Composant principal
 │   ├── package.json
-│   ├── Dockerfil
 
 │
 ├── backend/                 # API Express.js
 │   ├── src/
 │   │   ├── controllers/    # Logique métier
-│   │   ├── models/         # Modèles de données
 │   │   ├── routes/         # Routes API
-│   │   ├── services/       # Services (Mistral AI)
-│   │   ├── config/         # Configuration
+│   │   ├── services/       # Services de traitement du PDF
 │   │   └── server.js       # Point d'entrée
 │   ├── package.json
-|   ├── Dockerfile
 │
-├── docker-compose.yml       # Configuration Docker
 └── README.md                # Documentation
 ```
 
@@ -104,7 +99,7 @@ npm install
 cp .env.example .env
 
 # Démarrer le serveur de développement
-npm run dev
+npm start
 ```
 
 ### Installation du Frontend
@@ -135,7 +130,7 @@ L'application sera accessible sur `http://localhost:3000`
 - **Camara Diangou** - Développement React.js
 
 ### Backend et DevOps
-- **Charlery Malcolm** - Développement Express.js, Infrastructure
+- **Charlery Malcolm** - Développement Express.js
 
 ### Product Owner
 - **Intsorou Samentah** - Vision produit, Définition des fonctionnalités
