@@ -10,6 +10,8 @@ export default function Upload() {
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+
 
   const handleClick = () => {
     inputRef.current?.click();
@@ -20,7 +22,7 @@ export default function Upload() {
     if (selected) {
       setFile(selected);
     }
-  };
+  };  
 
   const removeFile = () => {
     setFile(null);
@@ -29,6 +31,41 @@ export default function Upload() {
       inputRef.current.focus();
     }
   };
+
+  async function sendPdf() {
+  if (!file) return;
+
+  try {
+    setLoading(true);
+
+    const formData = new FormData();
+    formData.append("pdf", file);
+
+    const res = await fetch("http://localhost:3001/analyse", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(errText || "Erreur serveur");
+    }
+
+    const data = await res.json();
+    console.log("BACK RESULT:", data);
+
+    // ⚡ Correction ici
+    localStorage.setItem("analysisResult", JSON.stringify(data));
+
+    navigate("/results");
+  } catch (err) {
+    console.error("Upload error:", err);
+    alert("Erreur pendant l’analyse: " + err.message);
+  } finally {
+    setLoading(false);
+  }
+}
+
 
   return (
     <div className="min-h-screen bg-raspberry-50 flex flex-col">
@@ -40,7 +77,7 @@ export default function Upload() {
         aria-labelledby="page-title"
         className="flex-1 flex items-center justify-center px-4"
       >
-        <div className="max-w-140 w-full flex flex-col gap-6">
+        <div className="max-w-[560px] w-full flex flex-col gap-6">
 
           <div className="flex items-center justify-between">
             <h1
@@ -73,7 +110,7 @@ export default function Upload() {
                 ? "Fichier chargé"
                 : "Téléverser un fichier de rapport de laboratoire"
             }
-            className="w-full h-62"
+            className="w-full h-[248px]"
             icon={
               file ? (
                 <CheckCircle
@@ -145,7 +182,7 @@ export default function Upload() {
               bg="raspberry"
               text="white"
               aria-label="Analyser le rapport sélectionné"
-              onClick={() => navigate("/results")}
+              onClick={sendPdf}
               className="w-full py-3 text-base"
             >
               Analyser ce rapport
