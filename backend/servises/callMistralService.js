@@ -1,9 +1,36 @@
 import fetch from "node-fetch";
 
-const PROMPT_TEMPLATE =
-  `
-écris UNIQUEMENT un json qui renvoie le nom de l'élément, son taux, une petite explication
-tu préciseras pour chaque élément la catégirie "corect", "trop élevé", "trop bas"
+const PROMPT_TEMPLATE = `
+Tu dois répondre STRICTEMENT avec un JSON valide et COMPLET.
+Aucun texte avant ou après.
+
+RÈGLES ABSOLUES :
+- Le JSON doit être entièrement fermé
+- Tous les objets doivent être complets
+- Ne JAMAIS couper une valeur
+- Si la réponse est trop longue, résume les explications MAIS termine toujours le JSON
+- Ne mets AUCUN commentaire
+
+CONTRAINTE CRITIQUE :
+- Tu dois retourner AU MAXIMUM 8 éléments dans "elements"
+- Si le document contient plus d’analyses, ignore-les
+- Ne dépasse jamais cette limite
+
+Format OBLIGATOIRE :
+
+{
+  "elements": [
+    {
+      "nom": "...",
+      "taux": "...",
+      "intervalle": "...",
+      "categorie": "correct | trop élevé | trop bas",
+      "explication": "..."
+    }
+  ]
+}
+
+Analyse le texte suivant :
 """
 {{TEXT_FROM_PDF}}
 """
@@ -16,13 +43,14 @@ export async function generateTextFromPdf(pdfText) {
     method: "POST",
     headers: {
       Authorization: `Bearer ${process.env.API_KEY}`,
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       model: "mistral-small-latest",
       messages: [{ role: "user", content: prompt }],
-      max_tokens: 1000
-    })
+      temperature: 0.2,
+      max_tokens: 3000,
+    }),
   });
 
   const data = await response.json();
@@ -30,9 +58,16 @@ export async function generateTextFromPdf(pdfText) {
   if (!response.ok) {
     throw new Error(data.error?.message || "Erreur API Mistral");
   }
-  let dataJson = data.choices[0].message.content
-  .replace(/^```json\s*\[/, "")
-  .replace(/\]\s*```$/, "");
-    console.log(dataJson)
-  return dataJson;
+
+  let content = data.choices?.[0]?.message?.content || "";
+
+  // Nettoyage universel
+  content = content
+    .replace(/```json/gi, "")
+    .replace(/```/g, "")
+    .trim();
+
+  console.log("🧠 IA RAW LENGTH:", content.length);
+
+  return content;
 }
