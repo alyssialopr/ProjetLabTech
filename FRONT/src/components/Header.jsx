@@ -29,8 +29,8 @@ export default function Header() {
             aria-label="Retour à l’accueil – Assistant d’analyse de résultats médicaux"
           >
             <img
-              src="./logo.png"
-              alt=""
+              src="../logo.png"
+              alt="Logo Lab'Tech"
               className="h-14 w-auto mr-4"
               aria-hidden="true"
             />

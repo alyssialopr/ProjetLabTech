@@ -1,9 +1,25 @@
-export default function TestValueCard({ name }) {
+import { useState } from "react";
+
+export default function TestValueCard({ name, onChange }) {
   const safeId = name
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/\s+/g, "-")
     .toLowerCase();
+
+  const [value, setValue] = useState("");
+  const [unit, setUnit] = useState("");
+  const [min, setMin] = useState("");
+  const [max, setMax] = useState("");
+
+  const notifyParent = (updated = {}) => {
+    onChange?.(name, {
+      value: updated.value ?? value,
+      unit: updated.unit ?? unit,
+      min: updated.min ?? min,
+      max: updated.max ?? max,
+    });
+  };
 
   return (
     <fieldset
@@ -17,10 +33,14 @@ export default function TestValueCard({ name }) {
       "
       aria-labelledby={`${safeId}-title`}
     >
-      <legend id={`${safeId}-title`} className="text-sm font-semibold text-raspberry-900">
+      <legend
+        id={`${safeId}-title`}
+        className="text-sm font-semibold text-raspberry-900"
+      >
         {name}
       </legend>
 
+      {/* Valeur + unité */}
       <div className="grid grid-cols-2 gap-4">
         <div className="flex flex-col gap-1">
           <label
@@ -32,11 +52,15 @@ export default function TestValueCard({ name }) {
 
           <input
             id={`${safeId}-value`}
-            name={`${safeId}-value`}
             type="number"
             inputMode="decimal"
             step="any"
             placeholder="Exemple : 14,2"
+            value={value}
+            onChange={(e) => {
+              setValue(e.target.value);
+              notifyParent({ value: e.target.value });
+            }}
             className="
               border-2 border-raspberry-200
               rounded-lg
@@ -59,8 +83,11 @@ export default function TestValueCard({ name }) {
 
           <select
             id={`${safeId}-unit`}
-            name={`${safeId}-unit`}
-            defaultValue=""
+            value={unit}
+            onChange={(e) => {
+              setUnit(e.target.value);
+              notifyParent({ unit: e.target.value });
+            }}
             className="
               border-2 border-raspberry-200
               rounded-lg
@@ -75,34 +102,35 @@ export default function TestValueCard({ name }) {
             <option value="" disabled>
               Sélectionnez une unité
             </option>
-            <option value="g/dL">g par décilitre</option>
-            <option value="mg/dL">milligrammes par décilitre</option>
-            <option value="mmol/L">millimoles par litre</option>
-            <option value="µmol/L">micromoles par litre</option>
-            <option value="10^9/L">10 puissance 9 par litre</option>
-            <option value="U/L">unités par litre</option>
-            <option value="%">pourcentage</option>
+            <option value="g/dL">g/dL</option>
+            <option value="mg/dL">mg/dL</option>
+            <option value="mmol/L">mmol/L</option>
+            <option value="µmol/L">µmol/L</option>
+            <option value="10^9/L">10⁹/L</option>
+            <option value="U/L">U/L</option>
+            <option value="%">%</option>
           </select>
         </div>
       </div>
 
+      {/* Plage de référence */}
       <fieldset className="flex flex-col gap-1">
         <legend className="text-sm font-medium text-raspberry-900">
           Plage de référence (optionnel)
         </legend>
 
         <div className="flex items-center gap-2">
-          <label htmlFor={`${safeId}-min`} className="sr-only">
-            Valeur minimale de référence
-          </label>
-
           <input
             id={`${safeId}-min`}
-            name={`${safeId}-min`}
             type="number"
             inputMode="decimal"
             step="any"
             placeholder="Minimum"
+            value={min}
+            onChange={(e) => {
+              setMin(e.target.value);
+              notifyParent({ min: e.target.value });
+            }}
             className="
               w-full
               border-2 border-raspberry-200
@@ -115,22 +143,19 @@ export default function TestValueCard({ name }) {
             "
           />
 
-          <span className="sr-only">à</span>
-          <span aria-hidden="true" className="text-sm text-raspberry-700">
-            à
-          </span>
-
-          <label htmlFor={`${safeId}-max`} className="sr-only">
-            Valeur maximale de référence
-          </label>
+          <span className="text-sm text-raspberry-700">à</span>
 
           <input
             id={`${safeId}-max`}
-            name={`${safeId}-max`}
             type="number"
             inputMode="decimal"
             step="any"
             placeholder="Maximum"
+            value={max}
+            onChange={(e) => {
+              setMax(e.target.value);
+              notifyParent({ max: e.target.value });
+            }}
             className="
               w-full
               border-2 border-raspberry-200

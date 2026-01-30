@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import UiButton from "../components/UiButton";
 import { Smile, Frown, Meh } from "lucide-react";
 import Header from "../components/Header";
@@ -9,6 +9,46 @@ import html2canvas from "html2canvas";
 export default function LabResultsPage() {
   const navigate = useNavigate();
   const [focusedResultId, setFocusedResultId] = useState(null);
+
+
+  const [results, setResults] = useState([]);
+
+  
+const normalCount = results.filter(r => r.status === "normal").length;
+const abnormalCount = results.length - normalCount;
+
+
+  useEffect(() => {
+  const stored = localStorage.getItem("analysisResult");
+  if (!stored) return;
+
+  const parsed = JSON.parse(stored);
+  const elements = parsed?.result?.elements || [];
+
+  const mapped = elements.map((el, index) => {
+    const isNormal =
+      el.categorie === "correct" || el.categorie === "normal";
+
+    return {
+      id: index + 1,
+      name: el.nom || "Analyse",
+      value: el.taux || "-",
+      status: isNormal ? "normal" : "abnormal",
+      resultIcon: isNormal ? <Smile /> : <Frown />,
+      color: isNormal ? "border-green-400" : "border-yellow-400",
+      bgColor: isNormal ? "bg-green-50" : "bg-yellow-50",
+      statusColor: isNormal
+        ? "bg-green-100 text-green-800"
+        : "bg-yellow-100 text-yellow-800",
+      explanation:
+        el.explication ||
+        "Aucune explication fournie par l’analyse automatique.",
+    };
+  });
+
+  setResults(mapped);
+}, []);
+
 
   const handlePDFExport = async () => {
     try {
@@ -216,47 +256,6 @@ export default function LabResultsPage() {
     }
   };
 
-  const [results] = useState([
-    {
-      id: 1,
-      name: "HDL Cholesterol",
-      value: "24",
-      resultIcon: <Meh />,
-      status: "abnormal",
-      color: "border-blue-400",
-      bgColor: "bg-blue-50",
-      statusColor: "bg-blue-100 text-blue-800",
-      icon: "⚠️",
-      explanation:
-        "Votre niveau de HDL Cholesterol est à un niveau anormal. Il est recommandé de consulter un professionnel de santé pour une évaluation plus approfondie et des conseils personnalisés.",
-    },
-    {
-      id: 2,
-      name: "Hemoglobin",
-      value: "12.4",
-      resultIcon: <Smile />,
-      status: "normal",
-      color: "border-green-400",
-      bgColor: "bg-green-50",
-      statusColor: "bg-green-100 text-green-800",
-      icon: "✓",
-      explanation:
-        "Votre niveau de glucose est à un niveau sain. C'est bon signe ! Continuer de maintenir un régime alimentaire équilibré, un exercice régulier et un mode de vie sain.",
-    },
-    {
-      id: 3,
-      name: "Glucose",
-      value: "9",
-      resultIcon: <Frown />,
-      status: "abnormal",
-      color: "border-yellow-400",
-      bgColor: "bg-yellow-50",
-      statusColor: "bg-yellow-100 text-yellow-800",
-      icon: "⚠️",
-      explanation:
-        "Votre niveau de glucose est à un niveau sain. Il est recommandé de consulter un professionnel de santé pour une évaluation plus approfondie et des conseils personnalisés.",
-    },
-  ]);
 
   return (
     <div className="w-screen min-h-screen bg-raspberry-50">
@@ -279,140 +278,117 @@ export default function LabResultsPage() {
 
           {/* Results Summary */}
           <section className="p-6 mb-6" aria-label="Résumé des résultats">
-            <div className="flex items-start gap-3 mb-4">
-              <button
-                onClick={() => navigate("/help")}
-                className="w-8 h-8 bg-raspberry-700 rounded flex items-center justify-center text-white text-lg focus:outline-none focus:ring-2 focus:ring-raspberry-700 focus:ring-offset-2 transition"
-                aria-label="Accéder à l'aide médicale"
-              >
-                🏥
-              </button>
-              <div className="flex-1">
-                <h1 className="font-bold text-gray-900 text-2xl">
-                  Vos Résultats
-                </h1>
-              </div>
-            </div>
+  <div className="flex items-start gap-3 mb-4">
+    <button
+      onClick={() => navigate("/help")}
+      className="w-8 h-8 bg-raspberry-700 rounded flex items-center justify-center text-white text-lg focus:outline-none focus:ring-2 focus:ring-raspberry-700 focus:ring-offset-2 transition"
+      aria-label="Accéder à l'aide médicale"
+    >
+      🏥
+    </button>
+    <div className="flex-1">
+      <h1 className="font-bold text-gray-900 text-2xl">
+        Vos Résultats
+      </h1>
+    </div>
+  </div>
 
-            <div
-              className="space-y-3"
-              role="region"
-              aria-label="Résumé du statut des résultats"
-            >
-              <div
-                className="flex items-start gap-2 text-green-700 bg-green-50 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition"
-                role="status"
-                tabIndex={0}
-                aria-label="1 valeur est dans la normale"
-              >
-                <span className="mt-0.5" aria-hidden="true">
-                  ✅
-                </span>
-                <span className="text-sm">1 valeur est dans la normale.</span>
-              </div>
+  <div
+    className="space-y-3"
+    role="region"
+    aria-label="Résumé du statut des résultats"
+  >
+    {normalCount > 0 && (
+      <div
+        className="flex items-start gap-2 text-green-700 bg-green-50 p-3 rounded-lg"
+        role="status"
+        tabIndex={0}
+        aria-label={`${normalCount} valeur(s) normale(s)`}
+      >
+        <span className="mt-0.5" aria-hidden="true">✅</span>
+        <span className="text-sm">
+          {normalCount} valeur{normalCount > 1 ? "s" : ""} normale{normalCount > 1 ? "s" : ""}.
+        </span>
+      </div>
+    )}
 
-              <div
-                className="flex items-start gap-2 text-green-700 bg-green-50 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition"
-                role="status"
-                tabIndex={0}
-                aria-label="Bonne nouvelle, toutes les valeurs sont bonnes"
-              >
-                <span className="mt-0.5" aria-hidden="true">
-                  ✅
-                </span>
-                <span className="text-sm">
-                  Bonne nouvelle ! Toutes vos valeurs sont bonnes. Continuez à
-                  maintenir un mode de vie sain ! N'oubliez pas de discuter de
-                  ces résultats avec votre professionnel de santé lors de votre
-                  prochaine visite.
-                </span>
-              </div>
+    {abnormalCount > 0 && (
+      <div
+        className="flex items-start gap-2 text-yellow-700 bg-yellow-50 p-3 rounded-lg"
+        role="status"
+        tabIndex={0}
+        aria-label={`${abnormalCount} valeur(s) à surveiller`}
+      >
+        <span className="mt-0.5" aria-hidden="true">⚠️</span>
+        <span className="text-sm">
+          {abnormalCount} valeur{abnormalCount > 1 ? "s" : ""} à surveiller. Consultez un professionnel de santé pour interprétation.
+        </span>
+      </div>
+    )}
+  </div>
+</section>
 
-              <div
-                className="flex items-start gap-2 text-gray-600 bg-gray-50 p-3 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition"
-                role="note"
-                tabIndex={0}
-                aria-label="Disclaimer: Ce site sert principalement d'information et ne remplace pas un avis médical professionnel"
-              >
-                <span className="mt-0.5" aria-hidden="true">
-                  ⚠️
-                </span>
-                <span>
-                  Disclaimer: Ce site sert principalement d'information - ce
-                  n'est pas un outil medical, ne remplace pas un avis medical
-                  professionnel.
-                </span>
-              </div>
-            </div>
-          </section>
 
           {/* Results Cards */}
           <main id="main-content" className="space-y-4">
-            <h2 className="sr-only">
-              Détails des résultats médicaux - Utilisez les flèches haut/bas
-              pour naviguer entre les résultats
-            </h2>
-            {results.map((result) => (
-              <article
-                key={result.id}
-                tabIndex={0}
-                data-result-id={result.id}
-                onKeyDown={(e) => handleKeyDown(e, result.id)}
-                onFocus={() => setFocusedResultId(result.id)}
-                onBlur={() => setFocusedResultId(null)}
-                className={`border-l-4 ${result.color} bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition ${
-                  focusedResultId === result.id
-                    ? "ring-2 ring-purple-500 ring-offset-2"
-                    : ""
-                }`}
-                role="region"
-                aria-label={`Résultat: ${result.name} - Valeur: ${result.value} - Statut: ${result.status === "normal" ? "Normal" : "Anormal"}`}
-              >
-                <div className="p-4">
-                  <div className="flex justify-between items-start mb-3">
-                    <div>
-                      <h3 className="font-bold text-gray-900 text-lg">
-                        {result.name}
-                      </h3>
-                      <div className="flex items-center">
-                        <p className="text-3xl font-bold text-gray-900 mt-1">
-                          {result.value}
-                        </p>
-                        <div
-                          className="mx-4"
-                          aria-label={
-                            result.status === "normal"
-                              ? "Résultat normal"
-                              : "Résultat anormal"
-                          }
-                          role="img"
-                        >
-                          {result.resultIcon}
-                        </div>
-                      </div>
-                    </div>
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-semibold ${result.statusColor}`}
-                      aria-label={`Statut: ${
-                        result.status === "normal" ? "Normal" : "Anormal"
-                      }`}
-                    >
-                      {result.status === "normal" ? "✓ Normal" : "⚠ Abnormal"}
-                    </span>
-                  </div>
+  {results.length === 0 && (
+    <p className="text-gray-600 text-sm">
+      Aucun résultat détecté automatiquement dans ce document.
+    </p>
+  )}
 
-                  <div className={`${result.bgColor} p-4 rounded-lg`}>
-                    <h4 className="font-semibold text-gray-900 text-sm mb-2">
-                      Que cela signifie:
-                    </h4>
-                    <p className="text-sm text-gray-700 leading-relaxed">
-                      {result.explanation}
-                    </p>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </main>
+  {results.map((result) => (
+    <article
+      key={result.id}
+      tabIndex={0}
+      data-result-id={result.id}
+      onKeyDown={(e) => handleKeyDown(e, result.id)}
+      onFocus={() => setFocusedResultId(result.id)}
+      onBlur={() => setFocusedResultId(null)}
+      className={`border-l-4 ${result.color} bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition ${
+        focusedResultId === result.id
+          ? "ring-2 ring-purple-500 ring-offset-2"
+          : ""
+      }`}
+      role="region"
+      aria-label={`Résultat: ${result.name}`}
+    >
+      <div className="p-4">
+        <div className="flex justify-between items-start mb-3">
+          <div>
+            <h3 className="font-bold text-gray-900 text-lg">
+              {result.name}
+            </h3>
+            <div className="flex items-center">
+              <p className="text-3xl font-bold text-gray-900 mt-1">
+                {result.value}
+              </p>
+              <div className="mx-4" role="img">
+                {result.resultIcon}
+              </div>
+            </div>
+          </div>
+
+          <span
+            className={`px-3 py-1 rounded-full text-xs font-semibold ${result.statusColor}`}
+          >
+            {result.status === "normal" ? "✓ Normal" : "⚠ À surveiller"}
+          </span>
+        </div>
+
+        <div className={`${result.bgColor} p-4 rounded-lg`}>
+          <h4 className="font-semibold text-gray-900 text-sm mb-2">
+            Interprétation :
+          </h4>
+          <p className="text-sm text-gray-700 leading-relaxed">
+            {result.explanation}
+          </p>
+        </div>
+      </div>
+    </article>
+  ))}
+</main>
+
 
           {/* Footer Buttons */}
           <nav
