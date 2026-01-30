@@ -61,7 +61,6 @@ export async function generateTextFromPdf(pdfText) {
 
   let content = data.choices?.[0]?.message?.content || "";
 
-  // Nettoyage universel
   content = content
     .replace(/```json/gi, "")
     .replace(/```/g, "")
