@@ -6,19 +6,25 @@ import cors from "cors";
 dotenv.config();
 
 const app = express();
-
 const PORT = process.env.PORT || 3001;
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.FRONTEND_URL
+];
 
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://projet-lab-tech-38dy.vercel.app"
-  ],
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log("Blocked by CORS:", origin);
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST"],
 }));
 
@@ -33,5 +39,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log("Server running on http://localhost:3001");
+  console.log("Server running on port", PORT);
 });
