@@ -54,7 +54,6 @@ export default function Upload() {
     const data = await res.json();
     console.log("BACK RESULT:", data);
 
-    // ⚡ Correction ici
     localStorage.setItem("analysisResult", JSON.stringify(data));
 
     navigate("/results");
@@ -176,18 +175,20 @@ export default function Upload() {
               </button>
             </div>
           )}
-
-          {file && (
-            <UiButton
-              bg="raspberry"
-              text="white"
-              aria-label="Analyser le rapport sélectionné"
-              onClick={sendPdf}
-              className="w-full py-3 text-base"
-            >
-              Analyser ce rapport
-            </UiButton>
-          )}
+{file && (
+  <UiButton
+    bg="raspberry"
+    text="white"
+    aria-label="Analyser le rapport sélectionné"
+    onClick={sendPdf}
+    disabled={loading}
+    className={`w-full py-3 text-base ${
+      loading ? "opacity-70 cursor-not-allowed" : ""
+    }`}
+  >
+    {loading ? "Analyse en cours..." : "Analyser ce rapport"}
+  </UiButton>
+)}
 
         </div>
       </main>
