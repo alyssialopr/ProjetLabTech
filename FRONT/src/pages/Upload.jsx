@@ -11,6 +11,7 @@ export default function Upload() {
   const inputRef = useRef(null);
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 
   const handleClick = () => {
@@ -41,7 +42,7 @@ export default function Upload() {
     const formData = new FormData();
     formData.append("pdf", file);
 
-    const res = await fetch("http://localhost:3001/analyse", {
+    const res = await fetch(`${API_URL}/analyse`, {
       method: "POST",
       body: formData,
     });
